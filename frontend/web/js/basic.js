@@ -1,23 +1,18 @@
 $(document).ready(function(){
     $('.del_post').click(function () {
-       var id = $(this).attr('id');
-        //var container = $(this).parent();
-        var data = "id=" + id;
-        $.ajax({
-           type:"POST",
-            url:"?r=post/delete",
-            data:data,
-            //success:function(respone){
-            //    if(respone == "YES"){
-            //        alert("Deleted post with id:"+id);
-            //        container.slideUp('slow',function(){
-            //           container.remove();
-            //        });
-            //    }else{
-            //        alert("Cannot delete ...");
-            //    }
-            //}
-        });
+        if (confirm("Bạn muốn xóa bài viết này?")) {
+            var id = $(this).attr('id');
+            var data = "id=" + id;
+            var container = $(this).parent().parent().parent();
+            $.ajax({
+                type:"POST",
+                url:"?r=post/delete",
+                data:data,
+                success:function() {
+                    container.hide();
+                }
+            });
+        }
     });
 
     $('.like_post').click(function () {
@@ -27,9 +22,30 @@ $(document).ready(function(){
             url:"?r=post/like",
             data:data,
             success:function() {
-                $(".like_post").hide();
-                $(".unlike_post").show();
+                $(this).hide();
+                //$(".unlike_post").show();
             }
         });
+    });
+
+    $('.edit_profile').click(function () {
+        $(".edit_profile_success").show();
+    });
+
+    $('.post_comment').keypress(function(e) {
+       if (e.keyCode == 13) {
+           var data = $(this).attr('id') + "&content=" + $(this).val();
+           $(this).val("");
+           $.ajax({
+               type:"POST",
+               url:"?r=post/comment",
+               data:data,
+               success:function(response) {
+                  if(response !="NO"){
+                      $('#box-comment').append(response);
+                  }
+               }
+           });
+       }
     });
 });

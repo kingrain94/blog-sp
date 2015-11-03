@@ -19,6 +19,7 @@ class ProfileForm extends Model
     public $education;
     public $location;
     public $job;
+    public $gender;
 
     public function rules()
     {
@@ -29,6 +30,7 @@ class ProfileForm extends Model
             ['education', 'string'],
             ['location', 'string'],
             ['job', 'string'],
+            ['gender', 'string'],
         ];
     }
 
@@ -40,6 +42,7 @@ class ProfileForm extends Model
         $model->education = $user['education'];
         $model->location = $user['location'];
         $model->job = $user['job'];
+        $model->gender[0] = $user['gender'];
 
         return $model;
     }
@@ -47,9 +50,11 @@ class ProfileForm extends Model
     public function updateProfile($user)
     {
         $user->fullname = $this->fullname;
-        $user->setPassword($this->newPassword);
+//        $user->setPassword($this->newPassword);
         $user->education = $this->education;
         $user->location = $this->location;
+        $user->job = $this->job;
+        $user->gender = $this->gender[0];
         $user->save();
     }
 }

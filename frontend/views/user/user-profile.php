@@ -13,7 +13,7 @@
         <!-- Profile Image -->
         <div class="box box-primary">
             <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="User profile picture">
+                <a href="www.google.com"><img class="profile-user-img img-responsive img-circle" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="User profile picture"></a>
                 <h3 class="profile-username text-center"><?= $model['fullname'] ?></h3>
                 <p class="text-muted text-center"><?= $model['job'] ?></p>
 
@@ -139,11 +139,29 @@
                 </div><!-- /.tab-pane -->
 
                 <div class="tab-pane active" id="settings">
+
+                    <a class="edit_profile_success" style="display: none">
+                        <div class="callout callout-info">
+                            <h4>Success!</h4>
+                            <p>You have updated your information success!</p>
+                        </div>
+                    </a>
+
                     <form class="form-horizontal" action="<?= \yii\helpers\Url::to(['/user/edit-user-profile']) ?>" method="post">
                         <div class="form-group">
                             <label for="inputName" class="col-sm-2 control-label">Full Name</label>
                             <div class="col-sm-10">
                                 <input name="ProfileForm[fullname]" value="<?= $model['fullname'] ?>" type="text" class="form-control" id="inputName" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGender" class="col-sm-2 control-label">Gender</label>
+                            <div class="col-sm-2">
+                                <select class="form-control" name="ProfileForm[gender][]" id="inputGender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -165,6 +183,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputJob" class="col-sm-2 control-label">Work</label>
+                            <div class="col-sm-10">
+                                <input name="ProfileForm[job]" value="<?= $model['job'] ?>" type="text" class="form-control" id="inputJob" placeholder="Job">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="inputLocation" class="col-sm-2 control-label">Location</label>
                             <div class="col-sm-10">
                                 <input name="ProfileForm[location]" value="<?= $model['location'] ?>" type="text" class="form-control" id="inputLocation" placeholder="Location">
@@ -172,7 +196,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <a class="edit_profile"><button type="submit" class="btn btn-success">Submit</button></a>
                             </div>
                         </div>
                     </form>

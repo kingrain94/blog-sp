@@ -7,6 +7,8 @@
  */
 $this->title = 'Post Detail';
 $this->params['breadcrumbs'][] = $this->title;
+$listCmt = \common\models\Comment::find()->where(['post_id' => $model['id']])->asArray()->all();
+$likeCount = \common\models\Like::find()->where(['post_id' => $model['id']])->count();
 ?>
 
 <div class="row">
@@ -33,43 +35,33 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <!-- Social sharing buttons -->
                 <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                <span class="pull-right text-muted">45 likes - 2 comments</span>
+                <span class="pull-right text-muted"><?= $likeCount ?> likes - <?= sizeof($listCmt) ?> comments</span>
             </div><!-- /.box-body -->
-            <div class="box-footer box-comments">
-                <div class="box-comment">
-                    <!-- User image -->
-                    <img class="img-circle img-sm" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="user image">
-                    <div class="comment-text">
-                      <span class="username">
-                        Maria Gonzales
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                        It is a long established fact that a reader will be distracted
-                        by the readable content of a page when looking at its layout.
-                    </div><!-- /.comment-text -->
-                </div><!-- /.box-comment -->
-                <div class="box-comment">
-                    <!-- User image -->
-                    <img class="img-circle img-sm" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="user image">
-                    <div class="comment-text">
-                      <span class="username">
-                        Nora Havisham
-                        <span class="text-muted pull-right">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                        The point of using Lorem Ipsum is that it has a more-or-less
-                        normal distribution of letters, as opposed to using
-                        'Content here, content here', making it look like readable English.
-                    </div><!-- /.comment-text -->
-                </div><!-- /.box-comment -->
+            <div class="box-footer box-comments" id="box-comment">
+                <?php
+                foreach ($listCmt as $comment) {
+                    $user = \common\models\User::findOne(['id' => $comment['user_id']]);
+                    echo '<div class="box-comment">'.
+                        '<img class="img-circle img-sm" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="user image">'.
+                        '<div class="comment-text">'.
+                        '<span class="username">'.
+                        $user['username'].
+                        '<span class="text-muted pull-right">'.$comment['create_at'].'</span>'.
+                        '</span>'.
+                        $comment['content'].
+                        '</div>'.
+                        '</div>';
+                }
+                ?>
             </div><!-- /.box-footer -->
             <div class="box-footer">
-                <form action="#" method="post">
+
                     <img class="img-responsive img-circle img-sm" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="alt text">
                     <!-- .img-push is used to add margin to elements next to floating images -->
                     <div class="img-push">
-                        <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                        <input id="user_id=<?= Yii::$app->user->getId() ?>&post_id=<?= $model['id'] ?>" type="text" class="post_comment form-control input-sm" placeholder="Press enter to post comment">
                     </div>
-                </form>
+
             </div><!-- /.box-footer -->
         </div><!-- /.box -->
     </div >

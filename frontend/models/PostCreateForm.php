@@ -24,10 +24,11 @@ class PostCreateForm extends Model
     public function rules()
     {
         return [
-            [['title', 'content', 'permit'], 'required'],
+            [['title', 'content', 'permit', 'date'], 'required'],
             ['title', 'string', 'min' => 5, 'max' => 100],
             ['content', 'string', 'min' => 5, 'max' => 1000],
             ['permit', 'integer', 'min' => 1, 'max' => 4],
+            ['date', 'date']
         ];
     }
 

@@ -7,8 +7,10 @@
  */
 namespace frontend\controllers;
 
+use common\models\Comment;
 use common\models\Like;
 use common\models\Post;
+use common\models\User;
 use frontend\models\PostCreateForm;
 use frontend\models\PostEditForm;
 use Yii;
@@ -17,6 +19,8 @@ use yii\web\Controller;
 
 class PostController extends Controller
 {
+    public $enableCsrfValidation = false;
+
     public function actionCreate()
     {
         if (Yii::$app->user->isGuest) {
@@ -25,7 +29,6 @@ class PostController extends Controller
 
         $model = new PostCreateForm();
         $model->user_id = Yii::$app->user->getId();
-        $model->date = date('Y-d-m h:i:s');
 
         if ($model->load(Yii::$app->request->post())) {
             $model->createPost();
@@ -102,6 +105,33 @@ class PostController extends Controller
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
             Like::addLike($id, Yii::$app->user->getId());
+        }
+    }
+
+    public function actionComment()
+    {
+        if (isset($_POST['user_id']) && isset($_POST['post_id']) && isset($_POST['content'])) {
+            $comment = new Comment();
+            $content['user_id'] = $_POST['user_id'];
+            $comment['post_id'] = $_POST['post_id'];
+            $comment['content'] = $_POST['content'];
+            //$comment['create_at'] = Yii::$app->formatter->asDatetime("Y-m-d");
+            $comment->save();
+
+            $user = User::findOne(['id' => $_POST['user_id']]);
+
+            echo '<div class="box-comment">'.
+                    '<img class="img-circle img-sm" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="user image">'.
+                    '<div class="comment-text">'.
+                      '<span class="username">'.
+                        $user['username'].
+                        '<span class="text-muted pull-right">'.$comment['create_at'].'</span>'.
+                      '</span>'.
+                        $comment['content'].
+                    '</div>'.
+                '</div>';
+        } else {
+            echo 'NO';
         }
     }
 }
