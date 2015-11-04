@@ -22,6 +22,19 @@ $(document).ready(function(){
             url:"?r=post/like",
             data:data,
             success:function() {
+                $(this).replaceWith($('.unlike_post'));
+                //$(".unlike_post").show();
+            }
+        });
+    });
+
+    $('.unlike_post').click(function () {
+        var data = "id=" + $(this).attr('id');
+        $.ajax({
+            type:"POST",
+            url:"?r=post/unlike",
+            data:data,
+            success:function() {
                 $(this).hide();
                 //$(".unlike_post").show();
             }

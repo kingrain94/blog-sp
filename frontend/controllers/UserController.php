@@ -48,4 +48,10 @@ class UserController extends Controller
 
         return $this->render('user-profile', ['model' => $model]);
     }
+
+    public function actionShowFriendTimeline($id)
+    {
+        $model = User::findOne(['id' => $id]);
+        return $this->render('friend-timeline', ['model' => $model]);
+    }
 }

@@ -2,9 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: Nguyen
- * Date: 10/21/2015
- * Time: 11:01 PM
+ * Date: 11/4/2015
+ * Time: 7:53 PM
  */
+$this->title = 'Friend Timeline';
+$this->params['breadcrumbs'][] = $this->title;
+
+$listPost = \common\models\Post::find()->where(['user_id' => $model['id']])->asArray()->all();
 ?>
 
 <div class="row">
@@ -13,18 +17,32 @@
         <!-- Profile Image -->
         <div class="box box-primary">
             <div class="box-body box-profile">
-                <a href="www.google.com"><img class="profile-user-img img-responsive img-circle" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="User profile picture"></a>
+                <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
                 <h3 class="profile-username text-center"><?= $model['fullname'] ?></h3>
                 <p class="text-muted text-center"><?= $model['job'] ?></p>
 
                 <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
-                        <b>Posts</b> <a class="pull-right">100</a>
+                        <b>Posts</b> <a class="pull-right">543</a>
                     </li>
                     <li class="list-group-item">
-                        <b>Friends</b> <a class="pull-right">100</a>
+                        <b>Friends</b> <a class="pull-right">13,287</a>
                     </li>
                 </ul>
+
+                <?php
+                $user_id_1 = Yii::$app->user->getId();
+                $user_id_2 = $model['id'];
+                if ($user_id_1 > $user_id_2) {
+                    $tg = $user_id_1;
+                    $user_id_1 = $user_id_2;
+                    $user_id_2 = $tg;
+                }
+                $isFriend = \common\models\Relationship::findOne(['user_id_1' => $user_id_1, 'user_id_2' => $user_id_2, 'status' => 1]) != null;
+                if (!$isFriend) {
+                    echo '<a href="#" class="btn btn-primary btn-block"><b>Add Friend</b></a>';
+                }
+                ?>
             </div><!-- /.box-body -->
         </div><!-- /.box -->
 
@@ -43,16 +61,53 @@
 
                 <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
                 <p class="text-muted"><?= $model['location'] ?></p>
+
+                <hr>
+
+                <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                <p>The life if a fight!</p>
             </div><!-- /.box-body -->
         </div><!-- /.box -->
     </div><!-- /.col -->
     <div class="col-md-9">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class=""><a href="#timeline" data-toggle="tab" aria-expanded="false">Timeline</a></li>
-                <li class="active"><a href="#settings" data-toggle="tab" aria-expanded="true">Settings</a></li>
+                <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+                <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
             </ul>
             <div class="tab-content">
+                <div class="active tab-pane" id="activity">
+                    <?php
+                        foreach ($listPost as $post) {
+                            $cmtCount = \common\models\Comment::find()->where(['post_id' => $post['id']])->count();
+                            if (strlen($post['content']) > 200) {
+                                $postContent = substr($post['content'], 0, 200) ." ...";
+                            } else {
+                                $postContent = $post['content'];
+                            }
+                            echo '<div class="post">'.
+                        '<div class="user-block">'.
+                            '<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">'.
+                        '<span class="username">'.
+                          '<a href="?r=post/detail&id='.$post['id'].'">'. $post['title'] .'</a>'.
+                          '<a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>'.
+                        '</span>'.
+                            '<span class="description">'. $post['date'] .'</span>'.
+                        '</div>'.
+                        '<p>'.
+                                $postContent.
+                        '</p>'.
+                        '<ul class="list-inline">'.
+                            '<li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>'.
+                            '<li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments ('.$cmtCount.')</a></li>'.
+                        '</ul>'.
+
+                        '<input class="form-control input-sm" placeholder="Type a comment" type="text">'.
+                    '</div>';
+                        }
+                    ?>
+
+                </div><!-- /.tab-pane -->
                 <div class="tab-pane" id="timeline">
                     <!-- The timeline -->
                     <ul class="timeline timeline-inverse">
@@ -134,70 +189,6 @@
                             <i class="fa fa-clock-o bg-gray"></i>
                         </li>
                     </ul>
-                </div><!-- /.tab-pane -->
-
-                <div class="tab-pane active" id="settings">
-
-                    <a class="edit_profile_success" style="display: none">
-                        <div class="callout callout-info">
-                            <h4>Success!</h4>
-                            <p>You have updated your information success!</p>
-                        </div>
-                    </a>
-
-                    <form class="form-horizontal" action="<?= \yii\helpers\Url::to(['/user/edit-user-profile']) ?>" method="post">
-                        <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Full Name</label>
-                            <div class="col-sm-10">
-                                <input name="ProfileForm[fullname]" value="<?= $model['fullname'] ?>" type="text" class="form-control" id="inputName" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputGender" class="col-sm-2 control-label">Gender</label>
-                            <div class="col-sm-2">
-                                <select class="form-control" name="ProfileForm[gender][]" id="inputGender">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Old Password</label>
-                            <div class="col-sm-10">
-                                <input name="ProfileForm[oldPassword]" type="password" class="form-control" id="inputName" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">New Password</label>
-                            <div class="col-sm-10">
-                                <input name="ProfileForm[newPassword]" type="password" class="form-control" id="inputName" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEducation" class="col-sm-2 control-label">Education</label>
-                            <div class="col-sm-10">
-                                <input name="ProfileForm[education]" value="<?= $model['education'] ?>" type="text" class="form-control" id="inputEducation" placeholder="Education">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputJob" class="col-sm-2 control-label">Work</label>
-                            <div class="col-sm-10">
-                                <input name="ProfileForm[job]" value="<?= $model['job'] ?>" type="text" class="form-control" id="inputJob" placeholder="Job">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputLocation" class="col-sm-2 control-label">Location</label>
-                            <div class="col-sm-10">
-                                <input name="ProfileForm[location]" value="<?= $model['location'] ?>" type="text" class="form-control" id="inputLocation" placeholder="Location">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <a class="edit_profile"><button type="submit" class="btn btn-success">Submit</button></a>
-                            </div>
-                        </div>
-                    </form>
                 </div><!-- /.tab-pane -->
             </div><!-- /.tab-content -->
         </div><!-- /.nav-tabs-custom -->

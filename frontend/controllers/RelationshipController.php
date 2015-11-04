@@ -24,12 +24,13 @@ class RelationshipController extends Controller
 
     }
 
-    public function actionShowListFriend()
+    public function actionShowListFriend($friend_type)
     {
         $user_id = Yii::$app->user->getId();
 
-        $sql = 'SELECT * FROM relationship WHERE (user_id_1=:user_id OR user_id_2=:user_id) AND status=1';
-        $arrRelationship = Relationship::findBySql($sql, [':user_id' => $user_id])->asArray()->all();
+        $sql = 'SELECT * FROM relationship WHERE ((user_id_1=:user_id AND with_user_1_is=:friend_type)
+                  OR (user_id_2=:user_id AND with_user_2_is=:friend_type)) AND status=1';
+        $arrRelationship = Relationship::findBySql($sql, [':user_id' => $user_id, ':friend_type' => $friend_type])->asArray()->all();
 
         $model = array();
         foreach ($arrRelationship as $relationship) {

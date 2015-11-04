@@ -26,7 +26,7 @@ class PostCreateForm extends Model
         return [
             [['title', 'content', 'permit', 'date'], 'required'],
             ['title', 'string', 'min' => 5, 'max' => 100],
-            ['content', 'string', 'min' => 5, 'max' => 1000],
+            ['content', 'string', 'min' => 5],
             ['permit', 'integer', 'min' => 1, 'max' => 4],
             ['date', 'date']
         ];

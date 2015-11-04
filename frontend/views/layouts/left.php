@@ -35,9 +35,17 @@ use yii\helpers\Url;
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
                     ['label' => 'Navigation', 'options' => ['class' => 'header']],
-                    ['label' => 'Bài viết', 'icon' => 'fa fa-file-code-o', 'url' => ['/post/show-all'], 'active' => '0'],
-                    ['label' => 'Bạn bè', 'icon' => 'fa fa-file-code-o', 'url' => ['/relationship/show-list-friend'], 'active' => '0'],
-                    ['label' => 'Lịch làm việc', 'icon' => 'fa fa-file-code-o', 'url' => ['/schedule/show']],
+                    ['label' => 'Bài viết', 'icon' => 'fa fa-edit', 'url' => ['/post/show-all'], 'active' => '0'],
+                    [
+                        'label' => 'Mối quan hệ',
+                        'icon' => 'fa fa-group',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Bạn bè', 'icon' => 'fa fa-circle-o', 'url' => '?r=relationship/show-list-friend&friend_type=1',],
+                            ['label' => 'Người thân', 'icon' => 'fa fa-circle-o', 'url' => '?r=relationship/show-list-friend&friend_type=2',],
+                        ],
+                    ],
+                    ['label' => 'Lịch làm việc', 'icon' => 'fa fa-calendar', 'url' => ['/schedule/show']],
                 ],
             ]
         ) ?>

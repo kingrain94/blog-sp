@@ -9,6 +9,7 @@ $this->title = 'Post Detail';
 $this->params['breadcrumbs'][] = $this->title;
 $listCmt = \common\models\Comment::find()->where(['post_id' => $model['id']])->asArray()->all();
 $likeCount = \common\models\Like::find()->where(['post_id' => $model['id']])->count();
+$isLiked = \common\models\Like::findOne(['post_id' => $model['id'], 'user_id' => Yii::$app->user->getId()]) != null;
 ?>
 
 <div class="row">
@@ -34,7 +35,13 @@ $likeCount = \common\models\Like::find()->where(['post_id' => $model['id']])->co
                 </p>
 
                 <!-- Social sharing buttons -->
-                <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                <?php
+                if ($isLiked) {
+                    echo '<a class="unlike_post" id="' .$model['id'] .'"><button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-down"></i> Unlike</button></a>';
+                } else {
+                    echo '<a class="like_post" id="' .$model['id'] .'"><button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button></a>';
+                }
+                ?>
                 <span class="pull-right text-muted"><?= $likeCount ?> likes - <?= sizeof($listCmt) ?> comments</span>
             </div><!-- /.box-body -->
             <div class="box-footer box-comments" id="box-comment">

@@ -10,6 +10,8 @@ namespace frontend\controllers;
 use common\models\Comment;
 use common\models\Like;
 use common\models\Post;
+use common\models\PostNotification;
+use common\models\PostTag;
 use common\models\User;
 use frontend\models\PostCreateForm;
 use frontend\models\PostEditForm;
@@ -72,6 +74,10 @@ class PostController extends Controller
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
             Post::findOne(['id' => $id])->delete();
+            Like::deleteAll(['post_id' => $id]);
+            Comment::deleteAll(['post_id' => $id]);
+            PostTag::deleteAll(['post_id' => $id]);
+            PostNotification::deleteAll(['post_id' => $id]);
         }
     }
 
@@ -105,6 +111,17 @@ class PostController extends Controller
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
             Like::addLike($id, Yii::$app->user->getId());
+        }
+    }
+
+    public function actionUnlike()
+    {
+        if (Yii::$app->user->isGuest) {
+            $this->redirect(Url::to(['/site/login']));
+        }
+
+        if (isset($_POST['id'])) {
+            Like::deleteAll(['user_id' => Yii::$app->user->getId(), 'post_id' => $_POST['id']]);
         }
     }
 
