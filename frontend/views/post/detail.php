@@ -54,8 +54,13 @@ $isLiked = \common\models\Like::findOne(['post_id' => $model['id'], 'user_id' =>
                 <?php
                 foreach ($listCmt as $comment) {
                     $user = \common\models\User::findOne(['id' => $comment['user_id']]);
+                    if ($user['image'] != "") {
+                        $image = Yii::$app->request->baseUrl ."/images/" .$user['image'];
+                    } else {
+                        $image = Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
+                    }
                     echo '<div class="box-comment">'.
-                        '<img class="img-circle img-sm" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="user image">'.
+                        '<img class="img-circle img-sm" src="'.$image.'" alt="user image">'.
                         '<div class="comment-text">'.
                         '<span class="username">'.
                         $user['username'].
@@ -69,7 +74,14 @@ $isLiked = \common\models\Like::findOne(['post_id' => $model['id'], 'user_id' =>
             </div><!-- /.box-footer -->
             <div class="box-footer">
 
-                    <img class="img-responsive img-circle img-sm" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="alt text">
+                    <img class="img-responsive img-circle img-sm" src="<?php
+                    $cmtPerson = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
+                    if ($cmtPerson['image'] != "") {
+                        echo Yii::$app->request->baseUrl ."/images/" .$cmtPerson['image'];
+                    } else {
+                        echo Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
+                    }
+                    ?>" alt="alt text">
                     <!-- .img-push is used to add margin to elements next to floating images -->
                     <div class="img-push">
                         <input id="user_id=<?= Yii::$app->user->getId() ?>&post_id=<?= $model['id'] ?>" type="text" class="post_comment form-control input-sm" placeholder="Press enter to post comment">

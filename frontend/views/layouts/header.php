@@ -237,7 +237,7 @@ $friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model
                         if ($model['image'] != "") {
                             echo Yii::$app->request->baseUrl ."/images/" .$model['image'];
                         } else {
-                            echo Yii::$app->request->baseUrl ."/images/post-icon.png";
+                            echo Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
                         }
                         ?>" class="user-image" alt="User Image"/>
                         <span class="hidden-xs"><?= $model['fullname'] ?></span>

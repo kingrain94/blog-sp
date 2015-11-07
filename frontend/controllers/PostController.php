@@ -137,9 +137,14 @@ class PostController extends Controller
             $comment->save();
 
             $user = User::findOne(['id' => $_POST['user_id']]);
+            if ($user['image'] != "") {
+                $image = Yii::$app->request->baseUrl ."/images/" .$user['image'];
+            } else {
+                $image = Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
+            }
 
             echo '<div class="box-comment">'.
-                    '<img class="img-circle img-sm" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="user image">'.
+                    '<img class="img-circle img-sm" src="'.$image.'" alt="user image">'.
                     '<div class="comment-text">'.
                       '<span class="username">'.
                         $user['username'].
