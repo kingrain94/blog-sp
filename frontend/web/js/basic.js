@@ -47,7 +47,26 @@ $(document).ready(function(){
 
     $('.post_comment').keypress(function(e) {
        if (e.keyCode == 13) {
-           var data = $(this).attr('id') + "&content=" + $(this).val();
+           var now = new Date();
+           var year    = now.getFullYear();
+           var month   = now.getMonth()+1;
+           var day     = now.getDate();
+           var hour    = now.getHours();
+           var minute  = now.getMinutes();
+           if(month.toString().length == 1) {
+               month = '0'+month;
+           }
+           if(day.toString().length == 1) {
+               day = '0'+day;
+           }
+           if(hour.toString().length == 1) {
+               hour = '0'+hour;
+           }
+           if(minute.toString().length == 1) {
+               minute = '0'+minute;
+           }
+           var dateTime = year+'-'+month+'-'+day+' '+hour+':'+minute;
+           var data = $(this).attr('id') + "&content=" + $(this).val() + "&create_at=" + dateTime;
            $(this).val("");
            $.ajax({
                type:"POST",

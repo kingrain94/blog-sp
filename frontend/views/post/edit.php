@@ -21,8 +21,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="box-body">
 
-                    <?php $form = ActiveForm::begin()?>
+                    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']])?>
                     <?= $form->field($model,'title')?>
+
+                    <?= $form->field($model, 'thumbnail')->fileInput(['accept' => 'image/*', 'maxSize' => 10097152]) ?>
 
                     <div class="form-group">
                         <label for="inputDate">Date</label>

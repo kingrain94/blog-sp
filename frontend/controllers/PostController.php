@@ -90,7 +90,7 @@ class PostController extends Controller
         $list_post = Post::find()
             ->where(['user_id' => Yii::$app->user->getId()])
             ->asArray()
-            ->orderBy('date')
+            ->orderBy('id')
             ->all();
 
         return $this->render('show', ['model' => $list_post]);
@@ -129,9 +129,10 @@ class PostController extends Controller
     {
         if (isset($_POST['user_id']) && isset($_POST['post_id']) && isset($_POST['content'])) {
             $comment = new Comment();
-            $content['user_id'] = $_POST['user_id'];
+            $comment['user_id'] = $_POST['user_id'];
             $comment['post_id'] = $_POST['post_id'];
             $comment['content'] = $_POST['content'];
+            $comment['create_at'] = $_POST['create_at'];
             //$comment['create_at'] = Yii::$app->formatter->asDatetime("Y-m-d");
             $comment->save();
 

@@ -4,6 +4,9 @@ use yii\helpers\Html;
 /* @var $this \yii\web\View */
 /* @var $content string */
 $model = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
+$postCount = \common\models\Post::find()->where(['user_id' => $model['id']])->count();
+$friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model['id'], 'status' => 1])->count()
+    + \common\models\Relationship::find()->where(['user_id_2' => $model['id'], 'status' => 1])->count();
 ?>
 
 <header class="main-header">
@@ -230,13 +233,25 @@ $model = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
+                        <img src="<?php
+                        if ($model['image'] != "") {
+                            echo Yii::$app->request->baseUrl ."/images/" .$model['image'];
+                        } else {
+                            echo Yii::$app->request->baseUrl ."/images/post-icon.png";
+                        }
+                        ?>" class="user-image" alt="User Image"/>
                         <span class="hidden-xs"><?= $model['fullname'] ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
+                            <img src="<?php
+                            if ($model['image'] != "") {
+                                echo Yii::$app->request->baseUrl ."/images/" .$model['image'];
+                            } else {
+                                echo Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
+                            }
+                            ?>" class="img-circle"
                                  alt="User Image"/>
 
                             <p>
@@ -247,10 +262,10 @@ $model = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
                         <!-- Menu Body -->
                         <li class="user-body">
                             <div class="col-xs-6 text-center">
-                                <a href="#"><b>100</b><br>Posts</a>
+                                <a href="#"><b><?= $postCount ?></b><br>Bài viết</a>
                             </div>
                             <div class="col-xs-6 text-center">
-                                <a href="#"><b>100</b><br>Friends</a>
+                                <a href="#"><b><?= $friendCount ?></b><br>Mối quan hệ</a>
                             </div>
                         </li>
                         <!-- Menu Footer-->

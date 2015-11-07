@@ -5,6 +5,9 @@
  * Date: 10/13/2015
  * Time: 10:15 PM
  */
+$postCount = \common\models\Post::find()->where(['user_id' => $model['id']])->count();
+$friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model['id'], 'status' => 1])->count()
+    + \common\models\Relationship::find()->where(['user_id_2' => $model['id'], 'status' => 1])->count();
 ?>
 
 <a href="?r=user/show-friend-timeline&id=<?= $model['id'] ?>">
@@ -15,21 +18,27 @@
             <h5 class="widget-user-desc"><?= $model['job'] ?></h5>
         </div>
         <div class="widget-user-image">
-            <img class="img-circle" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpt1/v/t1.0-1/p160x160/11924271_619643408138167_2330895080493746153_n.jpg?oh=571f107c9b58e8a40855a3f2fc24f698&oe=56CB240D&__gda__=1452708976_36f67527aaa315e978072b6257923c0d" alt="User Avatar">
+            <img class="img-circle" src="<?php
+            if ($model['image'] != "") {
+                echo Yii::$app->request->baseUrl ."/images/" .$model['image'];
+            } else {
+                echo Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
+            }
+            ?>" alt="User Avatar">
         </div>
         <div class="box-footer">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="description-block">
-                        <h5 class="description-header">3,200</h5>
-                        <span class="description-text">POST</span>
+                        <h5 class="description-header"><?= $postCount ?></h5>
+                        <span class="description-text">Bài viết</span>
                     </div><!-- /.description-block -->
                 </div><!-- /.col -->
 
                 <div class="col-sm-6">
                     <div class="description-block">
-                        <h5 class="description-header">35</h5>
-                        <span class="description-text">FRIEND</span>
+                        <h5 class="description-header"><?= $friendCount ?></h5>
+                        <span class="description-text">Mối quan hệ</span>
                     </div><!-- /.description-block -->
                 </div><!-- /.col -->
             </div><!-- /.row -->

@@ -5,6 +5,7 @@
  * Date: 10/21/2015
  * Time: 11:01 PM
  */
+$user = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
 ?>
 
 <div class="row">
@@ -13,7 +14,13 @@
         <!-- Profile Image -->
         <div class="box box-primary">
             <div class="box-body box-profile">
-                <a href="www.google.com"><img class="profile-user-img img-responsive img-circle" src="http://localhost/yii2adv-blog/frontend/web/assets/58e3e194/img/user2-160x160.jpg" alt="User profile picture"></a>
+                <a href="www.google.com"><img class="profile-user-img img-responsive img-circle" src="<?php
+                    if ($user['image'] != "") {
+                        echo Yii::$app->request->baseUrl ."/images/" .$user['image'];
+                    } else {
+                        echo Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
+                    }
+                    ?>" alt="User profile picture"></a>
                 <h3 class="profile-username text-center"><?= $model['fullname'] ?></h3>
                 <p class="text-muted text-center"><?= $model['job'] ?></p>
 
@@ -145,11 +152,17 @@
                         </div>
                     </a>
 
-                    <form class="form-horizontal" action="<?= \yii\helpers\Url::to(['/user/edit-user-profile']) ?>" method="post">
+                    <form class="form-horizontal" action="<?= \yii\helpers\Url::to(['/user/edit-user-profile']) ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="inputName" class="col-sm-2 control-label">Full Name</label>
                             <div class="col-sm-10">
                                 <input name="ProfileForm[fullname]" value="<?= $model['fullname'] ?>" type="text" class="form-control" id="inputName" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFile" class="col-sm-2 control-label">Avatar</label>
+                            <div class="col-sm-2">
+                                <input name="ProfileForm[avatar]" type="file" id="inputFile" accept="image/*">
                             </div>
                         </div>
                         <div class="form-group">

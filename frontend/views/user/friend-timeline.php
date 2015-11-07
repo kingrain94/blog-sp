@@ -9,6 +9,8 @@ $this->title = 'Friend Timeline';
 $this->params['breadcrumbs'][] = $this->title;
 
 $listPost = \common\models\Post::find()->where(['user_id' => $model['id']])->asArray()->all();
+$friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model['id'], 'status' => 1])->count()
+    + \common\models\Relationship::find()->where(['user_id_2' => $model['id'], 'status' => 1])->count();
 ?>
 
 <div class="row">
@@ -17,16 +19,22 @@ $listPost = \common\models\Post::find()->where(['user_id' => $model['id']])->asA
         <!-- Profile Image -->
         <div class="box box-primary">
             <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+                <img class="profile-user-img img-responsive img-circle" src="<?php
+                if ($model['image'] != "") {
+                    echo Yii::$app->request->baseUrl ."/images/" .$model['image'];
+                } else {
+                    echo Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
+                }
+                ?>" alt="User profile picture">
                 <h3 class="profile-username text-center"><?= $model['fullname'] ?></h3>
                 <p class="text-muted text-center"><?= $model['job'] ?></p>
 
                 <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
-                        <b>Posts</b> <a class="pull-right">543</a>
+                        <b>Bài viết</b> <a class="pull-right"><?= sizeof($listPost) ?></a>
                     </li>
                     <li class="list-group-item">
-                        <b>Friends</b> <a class="pull-right">13,287</a>
+                        <b>Mối quan hệ</b> <a class="pull-right"><?= $friendCount ?></a>
                     </li>
                 </ul>
 
@@ -85,14 +93,19 @@ $listPost = \common\models\Post::find()->where(['user_id' => $model['id']])->asA
                             } else {
                                 $postContent = $post['content'];
                             }
+                            if ($post['image'] != "") {
+                                $image = Yii::$app->request->baseUrl ."/images/" .$post['image'];
+                            } else {
+                                $image =  Yii::$app->request->baseUrl ."/images/post-icon.png";
+                            }
                             echo '<div class="post">'.
                         '<div class="user-block">'.
-                            '<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">'.
+                            '<img class="img-circle img-bordered-sm" src="'.$image.'" alt="user image">'.
                         '<span class="username">'.
                           '<a href="?r=post/detail&id='.$post['id'].'">'. $post['title'] .'</a>'.
                           '<a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>'.
                         '</span>'.
-                            '<span class="description">'. $post['date'] .'</span>'.
+                            '<span class="description">'. $post['create_at'] .'</span>'.
                         '</div>'.
                         '<p>'.
                                 $postContent.

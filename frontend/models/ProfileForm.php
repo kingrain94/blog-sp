@@ -10,6 +10,7 @@ namespace frontend\models;
 
 
 use yii\base\Model;
+use yii\web\UploadedFile;
 
 class ProfileForm extends Model
 {
@@ -20,6 +21,10 @@ class ProfileForm extends Model
     public $location;
     public $job;
     public $gender;
+    /**
+     * @var UploadedFile
+     */
+    public $avatar;
 
     public function rules()
     {
@@ -31,6 +36,7 @@ class ProfileForm extends Model
             ['location', 'string'],
             ['job', 'string'],
             ['gender', 'string'],
+            ['avatar', 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg', 'checkExtensionByMimeType' => false],
         ];
     }
 
@@ -55,6 +61,24 @@ class ProfileForm extends Model
         $user->location = $this->location;
         $user->job = $this->job;
         $user->gender = $this->gender[0];
+        if ($this->upload()) {
+            $user->image = $this->avatar;
+        }
         $user->save();
+    }
+
+    public function upload()
+    {
+        if (!$this->hasErrors()) {
+            $this->avatar = UploadedFile::getInstance($this, 'avatar');
+            if ($this->avatar == null) {
+                return false;
+            }
+            $this->avatar->saveAs('images/' . $this->avatar->baseName . '.' . $this->avatar->extension);
+            $this->avatar = $this->avatar->baseName . '.' . $this->avatar->extension;
+            return true;
+        } else {
+            return false;
+        }
     }
 }

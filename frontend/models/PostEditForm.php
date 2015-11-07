@@ -11,6 +11,7 @@ namespace frontend\models;
 
 use common\models\Post;
 use yii\base\Model;
+use yii\web\UploadedFile;
 
 class PostEditForm extends Model
 {
@@ -20,6 +21,10 @@ class PostEditForm extends Model
     public $permit;
     public $date;
     public $user_id;
+    /**
+     * @var UploadedFile
+     */
+    public $thumbnail;
 
     public function rules()
     {
@@ -28,6 +33,8 @@ class PostEditForm extends Model
             ['title', 'string', 'min' => 5, 'max' => 100],
             ['content', 'string', 'min' => 5],
             ['permit', 'integer', 'min' => 1, 'max' => 4],
+            ['date', 'string'],
+            ['thumbnail', 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg', 'checkExtensionByMimeType' => false],
         ];
     }
 
@@ -39,7 +46,7 @@ class PostEditForm extends Model
         $model->title = $currentPost['title'];
         $model->content = $currentPost['content'];
         $model->permit[0] = $currentPost['permit'];
-        $model->date = $currentPost['date'];
+        $model->date = $currentPost['create_at'];
 
         return $model;
     }
@@ -49,8 +56,30 @@ class PostEditForm extends Model
         $editPost['title'] = $this->title;
         $editPost['content'] = $this->content;
         $editPost['permit'] = $this->permit[0];
-        $editPost['date'] = $this->date;
+        if ($this->upload()) {
+            $editPost['image'] = $this->thumbnail;
+        }
+        if ($this->date == "") {
+            $editPost['create_at'] = date("Y/m/d H:i");
+        } else {
+            $editPost['create_at'] = $this->date;
+        }
         $editPost['user_id'] = $this->user_id;
         $editPost->save();
+    }
+
+    public function upload()
+    {
+        if (!$this->hasErrors()) {
+            $this->thumbnail = UploadedFile::getInstance($this, 'thumbnail');
+            if ($this->thumbnail == null) {
+                return false;
+            }
+            $this->thumbnail->saveAs('images/' . $this->thumbnail->baseName . '.' . $this->thumbnail->extension);
+            $this->thumbnail = $this->thumbnail->baseName . '.' . $this->thumbnail->extension;
+            return true;
+        } else {
+            return false;
+        }
     }
 }

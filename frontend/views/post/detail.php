@@ -18,9 +18,15 @@ $isLiked = \common\models\Like::findOne(['post_id' => $model['id'], 'user_id' =>
         <div class="box box-widget">
             <div class="box-header with-border">
                 <div class="user-block">
-                    <img class="img-circle" src="<?= Yii::$app->request->baseUrl ."/images/post-icon.PNG" ?>" alt="user image">
-                    <span class="title"><a href="#"><?= $model['title'] ?></a></span>
-                    <span class="description"><?= $model['date'] ?></span>
+                    <img class="img-circle" src="<?php
+                    if ($model['image'] != "") {
+                        echo Yii::$app->request->baseUrl ."/images/" .$model['image'];
+                    } else {
+                        echo Yii::$app->request->baseUrl ."/images/post-icon.png";
+                    }
+                    ?>" alt="user image">
+                    <span class="title"><a href="#">&nbsp;&nbsp;&nbsp;<?= $model['title'] ?></a></span>
+                    <span class="description"><?= $model['create_at'] ?></span>
                 </div><!-- /.user-block -->
                 <div class="box-tools">
                     <button class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read"><i class="fa fa-circle-o"></i></button>

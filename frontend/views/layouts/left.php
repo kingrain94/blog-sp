@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+$model = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
 ?>
 
 <aside class="main-sidebar">
@@ -9,7 +10,13 @@ use yii\helpers\Url;
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                <img src="<?php
+                if ($model['image'] != "") {
+                    echo Yii::$app->request->baseUrl ."/images/" .$model['image'];
+                } else {
+                    echo Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
+                }
+                ?>" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 <p></p>
@@ -34,7 +41,7 @@ use yii\helpers\Url;
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    ['label' => 'Navigation', 'options' => ['class' => 'header']],
+                    ['label' => 'Bảng tùy chọn', 'options' => ['class' => 'header']],
                     ['label' => 'Bài viết', 'icon' => 'fa fa-edit', 'url' => ['/post/show-all'], 'active' => '0'],
                     [
                         'label' => 'Mối quan hệ',
