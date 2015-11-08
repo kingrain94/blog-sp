@@ -18,7 +18,7 @@ $friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model
 
         <!-- Profile Image -->
         <div class="box box-primary">
-            <div class="box-body box-profile">
+            <div id="friend_timeline_profile" class="box-body box-profile">
                 <img class="profile-user-img img-responsive img-circle" src="<?php
                 if ($model['image'] != "") {
                     echo Yii::$app->request->baseUrl ."/images/" .$model['image'];
@@ -47,10 +47,37 @@ $friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model
                     $user_id_2 = $tg;
                 }
                 $isFriend = \common\models\Relationship::findOne(['user_id_1' => $user_id_1, 'user_id_2' => $user_id_2, 'status' => 1]) != null;
+                $pendingRelationship = \common\models\Relationship::findOne(['user_id_1' => $user_id_1, 'user_id_2' => $user_id_2, 'status' => 0]);
+                $isFriendPending = $pendingRelationship != null;
                 if (!$isFriend) {
-                    echo '<a href="#" class="btn btn-primary btn-block"><b>Add Friend</b></a>';
+                    if ($isFriendPending) {
+                        if (Yii::$app->user->getId() != $pendingRelationship['user_id_action']) {
+                            echo '<a id="accept_friend_btn" class="btn btn-block btn-success"><b>Chấp nhận yêu cầu</b></a>';
+                        } else {
+                            echo '<a class="btn btn-primary btn-block disabled"><b>Đã gửi yêu cầu</b></a>';
+                        }
+                    } else {
+                        echo '<a id="add_friend_btn" class="btn btn-primary btn-block"><b>Thêm vào mối quan hệ</b></a>';
+                    }
                 }
                 ?>
+                <div id="add_friend_group" class="row" style="margin-top: 10px; display: none">
+                    <div class="col-lg-6">
+                        <button id="user_id_1=<?= Yii::$app->user->getId() ?>&user_id_2=<?= $model['id'] ?>" class="add_friend_fellow btn btn-block btn-success">Bạn bè</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <button id="user_id_1=<?= Yii::$app->user->getId() ?>&user_id_2=<?= $model['id'] ?>" class="add_friend_family btn btn-block btn-info">Người thân</button>
+                    </div>
+                </div>
+
+                <div id="accept_friend_group" class="row" style="margin-top: 10px; display: none">
+                    <div class="col-lg-6">
+                        <button id="user_id_1=<?= Yii::$app->user->getId() ?>&user_id_2=<?= $model['id'] ?>" class="accept_friend_fellow btn btn-block btn-primary">Bạn bè</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <button id="user_id_1=<?= Yii::$app->user->getId() ?>&user_id_2=<?= $model['id'] ?>" class="accept_friend_family btn btn-block btn-info">Người thân</button>
+                    </div>
+                </div>
             </div><!-- /.box-body -->
         </div><!-- /.box -->
 
