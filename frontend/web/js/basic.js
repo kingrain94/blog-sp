@@ -69,7 +69,7 @@ $(document).ready(function(){
 
     $('.post_comment').keypress(function(e) {
        if (e.keyCode == 13) {
-           var data = $(this).attr('id') + "&content=" + $(this).val() + "&create_at=" + getCurrentTime;
+           var data = $(this).attr('id') + "&content=" + $(this).val() + "&create_at=" + getCurrentTime();
            $(this).val("");
            $.ajax({
                type:"POST",
