@@ -7,6 +7,9 @@ $model = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
 $postCount = \common\models\Post::find()->where(['user_id' => $model['id']])->count();
 $friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model['id'], 'status' => 1])->count()
     + \common\models\Relationship::find()->where(['user_id_2' => $model['id'], 'status' => 1])->count();
+
+$listNewRelNotify = \common\models\RelationshipNotification::find()->where(['receive_id' => Yii::$app->user->getId(), 'status' => 0])->asArray()->all();
+$listOldRelNotify = \common\models\RelationshipNotification::find()->where(['receive_id' => Yii::$app->user->getId(), 'status' => 1])->asArray()->all();
 ?>
 
 <header class="main-header">
@@ -148,84 +151,38 @@ $friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model
                     </ul>
                 </li>
                 <!-- Tasks: style can be found in dropdown.less -->
-                <li class="dropdown tasks-menu">
+                <li class="notify_rel dropdown tasks-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-users"></i>
-                        <span class="label label-danger">9</span>
+                        <span class="rel_notify_count label label-danger"><?php if (sizeof($listNewRelNotify) > 0) echo sizeof($listNewRelNotify) ?></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 9 tasks</li>
+                        <li class="header">Bạn có <?= sizeof($listNewRelNotify) ?> thông báo về mối quan hệ </li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
-                                <li><!-- Task item -->
-                                    <a href="#">
-                                        <h3>
-                                            Design some buttons
-                                            <small class="pull-right">20%</small>
-                                        </h3>
-                                        <div class="progress xs">
-                                            <div class="progress-bar progress-bar-aqua" style="width: 20%"
-                                                 role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                                                 aria-valuemax="100">
-                                                <span class="sr-only">20% Complete</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- end task item -->
-                                <li><!-- Task item -->
-                                    <a href="#">
-                                        <h3>
-                                            Create a nice theme
-                                            <small class="pull-right">40%</small>
-                                        </h3>
-                                        <div class="progress xs">
-                                            <div class="progress-bar progress-bar-green" style="width: 40%"
-                                                 role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                                                 aria-valuemax="100">
-                                                <span class="sr-only">40% Complete</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- end task item -->
-                                <li><!-- Task item -->
-                                    <a href="#">
-                                        <h3>
-                                            Some task I need to do
-                                            <small class="pull-right">60%</small>
-                                        </h3>
-                                        <div class="progress xs">
-                                            <div class="progress-bar progress-bar-red" style="width: 60%"
-                                                 role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                                                 aria-valuemax="100">
-                                                <span class="sr-only">60% Complete</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- end task item -->
-                                <li><!-- Task item -->
-                                    <a href="#">
-                                        <h3>
-                                            Make beautiful transitions
-                                            <small class="pull-right">80%</small>
-                                        </h3>
-                                        <div class="progress xs">
-                                            <div class="progress-bar progress-bar-yellow" style="width: 80%"
-                                                 role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                                                 aria-valuemax="100">
-                                                <span class="sr-only">80% Complete</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- end task item -->
+                                <?php
+                                foreach ($listNewRelNotify as $newRelNotify) {
+                                    $userAction = \common\models\User::findOne(['id' => $newRelNotify['action_id']]);
+                                    if ($newRelNotify['type'] == 1) {
+                                        echo '<li>
+                                                <a href="?r=user/show-friend-timeline&id='.$userAction['id'].'" style="color: red">
+                                                    <i class="fa fa-user-plus text-aqua"></i>&nbsp;&nbsp; '.$userAction['username'].' đã yêu cầu tạo mối quan hệ
+                                                </a>
+                                            </li>';
+                                    } elseif ($newRelNotify['type'] == 2) {
+                                        echo '<li>
+                                                <a href="?r=user/show-friend-timeline&id='.$userAction['id'].'">
+                                                    <i class="fa fa-user text-aqua"></i>&nbsp;&nbsp; '.$userAction['username'].' đã chấp nhận yêu cầu của bạn
+                                                </a>
+                                            </li>';
+                                    }
+                                }
+                                ?>
                             </ul>
                         </li>
                         <li class="footer">
-                            <a href="#">View all tasks</a>
+                            <a href="#">Xem tất cả</a>
                         </li>
                     </ul>
                 </li>

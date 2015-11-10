@@ -153,4 +153,12 @@ $(document).ready(function(){
             }
         });
     });
+
+    $('.notify_rel').click(function() {
+        $('.rel_notify_count').hide();
+        $.ajax({
+            type:"POST",
+            url:"?r=notification/make-old-relationship-notification",
+        });
+    });
 });

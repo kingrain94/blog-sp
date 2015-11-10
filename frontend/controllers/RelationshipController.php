@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 use common\models\Relationship;
+use common\models\RelationshipNotification;
 use common\models\User;
 use Yii;
 use yii\web\Controller;
@@ -17,9 +18,14 @@ class RelationshipController extends Controller
     public function actionSendFriendRequestAsFellow()
     {
         if (isset($_POST['user_id_1']) && isset($_POST['user_id_2']) && isset($_POST['create_at'])) {
+            // Notification
+            $notify = new RelationshipNotification();
+            $notify['action_id'] = $_POST['user_id_1'];
+            $notify['receive_id'] = $_POST['user_id_2'];
+
             $user_id_1 = $_POST['user_id_1'];
             $user_id_2 = $_POST['user_id_2'];
-
+            // Relationship
             $rel = new Relationship();
             $rel['user_id_action'] = $user_id_1;
             if ($user_id_1 > $user_id_2) {
@@ -35,6 +41,11 @@ class RelationshipController extends Controller
             $rel['status'] = 0;
             $rel['create_at'] = $_POST['create_at'];
             $rel->save();
+
+            $notify['type'] = 1;
+            $notify['status'] = 0;
+            $notify['create_at'] = $_POST['create_at'];
+            $notify->save();
 
             echo '<a id="add_friend_btn" class="btn btn-primary btn-block disabled"><b>Đã gửi yêu cầu</b></a>';
         } else {
@@ -45,6 +56,11 @@ class RelationshipController extends Controller
     public function actionSendFriendRequestAsFamily()
     {
         if (isset($_POST['user_id_1']) && isset($_POST['user_id_2']) && isset($_POST['create_at'])) {
+            // Notification
+            $notify = new RelationshipNotification();
+            $notify['action_id'] = $_POST['user_id_1'];
+            $notify['receive_id'] = $_POST['user_id_2'];
+
             $user_id_1 = $_POST['user_id_1'];
             $user_id_2 = $_POST['user_id_2'];
 
@@ -64,6 +80,11 @@ class RelationshipController extends Controller
             $rel['create_at'] = $_POST['create_at'];
             $rel->save();
 
+            $notify['type'] = 1;
+            $notify['status'] = 0;
+            $notify['create_at'] = $_POST['create_at'];
+            $notify->save();
+
             echo '<a id="add_friend_btn" class="btn btn-primary btn-block disabled"><b>Đã gửi yêu cầu</b></a>';
         } else {
             echo 'NO';
@@ -73,6 +94,11 @@ class RelationshipController extends Controller
     public function actionAcceptFriendRequestAsFellow()
     {
         if (isset($_POST['user_id_1']) && isset($_POST['user_id_2']) && isset($_POST['update_at'])) {
+            // Notification
+            $notify = new RelationshipNotification();
+            $notify['action_id'] = $_POST['user_id_1'];
+            $notify['receive_id'] = $_POST['user_id_2'];
+
             $user_id_1 = $_POST['user_id_1'];
             $user_id_2 = $_POST['user_id_2'];
             $user_id_action = $user_id_1;
@@ -93,6 +119,11 @@ class RelationshipController extends Controller
             }
             $rel->save();
 
+            $notify['type'] = 2;
+            $notify['status'] = 0;
+            $notify['create_at'] = $_POST['update_at'];
+            $notify->save();
+
             echo 'YES';
         } else {
             echo 'NO';
@@ -102,6 +133,11 @@ class RelationshipController extends Controller
     public function actionAcceptFriendRequestAsFamily()
     {
         if (isset($_POST['user_id_1']) && isset($_POST['user_id_2']) && isset($_POST['update_at'])) {
+            // Notification
+            $notify = new RelationshipNotification();
+            $notify['action_id'] = $_POST['user_id_1'];
+            $notify['receive_id'] = $_POST['user_id_2'];
+
             $user_id_1 = $_POST['user_id_1'];
             $user_id_2 = $_POST['user_id_2'];
             $user_id_action = $user_id_1;
@@ -121,6 +157,11 @@ class RelationshipController extends Controller
                 $rel['with_user_2_is'] = 2;
             }
             $rel->save();
+
+            $notify['type'] = 2;
+            $notify['status'] = 0;
+            $notify['create_at'] = $_POST['update_at'];
+            $notify->save();
 
             echo 'YES';
         } else {
