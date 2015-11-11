@@ -161,4 +161,57 @@ $(document).ready(function(){
             url:"?r=notification/make-old-relationship-notification",
         });
     });
+
+    $('.text-aqua').click(function() {
+        $('#add-new-event').css({"background-color":"#00C0EF", "border-color":"#00C0EF"});
+        $('#event_color').val("#00C0EF");
+    });
+    $('.text-blue').click(function() {
+        $('#add-new-event').css({"background-color":"#0073B7", "border-color":"#0073B7"});
+        $('#event_color').val("#0073B7");
+    });
+    $('.text-light-blue').click(function() {
+        $('#add-new-event').css({"background-color":"#3C8DBC", "border-color":"#3C8DBC"});
+        $('#event_color').val("#3C8DBC");
+    });
+    $('.text-teal').click(function() {
+        $('#add-new-event').css({"background-color":"#39CCCC", "border-color":"#39CCCC"});
+        $('#event_color').val("#39CCCC");
+    });
+    $('.text-yellow').click(function() {
+        $('#add-new-event').css({"background-color":"#F39C12", "border-color":"#F39C12"});
+        $('#event_color').val("#F39C12");
+    });
+    $('.text-orange').click(function() {
+        $('#add-new-event').css({"background-color":"#FF851B", "border-color":"#FF851B"});
+        $('#event_color').val("#FF851B");
+    });
+    $('.text-green').click(function() {
+        $('#add-new-event').css({"background-color":"#00A65A", "border-color":"#00A65A"});
+        $('#event_color').val("#00A65A");
+    });
+    $('.text-lime').click(function() {
+        $('#add-new-event').css({"background-color":"#01FF70", "border-color":"#01FF70"});
+        $('#event_color').val("#01FF70");
+    });
+    $('.text-red').click(function() {
+        $('#add-new-event').css({"background-color":"#DD4B39", "border-color":"#DD4B39"});
+        $('#event_color').val("#DD4B39");
+    });
+    $('.text-purple').click(function() {
+        $('#add-new-event').css({"background-color":"#605CA8", "border-color":"#605CA8"});
+        $('#event_color').val("#605CA8");
+    });
+    $('.text-fuchsia').click(function() {
+        $('#add-new-event').css({"background-color":"#F012BE", "border-color":"#F012BE"});
+        $('#event_color').val("#F012BE");
+    });
+    $('.text-muted').click(function() {
+        $('#add-new-event').css({"background-color":"#777", "border-color":"#777"});
+        $('#event_color').val("#777");
+    });
+    $('.text-navy').click(function() {
+        $('#add-new-event').css({"background-color":"#001F3F", "border-color":"#001F3F"});
+        $('#event_color').val("#001F3F");
+    });
 });
