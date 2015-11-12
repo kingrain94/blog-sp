@@ -5,6 +5,8 @@
  * Date: 10/21/2015
  * Time: 11:01 PM
  */
+$this->title = 'Trang của bạn';
+$this->params['breadcrumbs'][] = $this->title;
 $user = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
 ?>
 

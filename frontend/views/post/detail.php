@@ -5,7 +5,7 @@
  * Date: 10/27/2015
  * Time: 10:46 PM
  */
-$this->title = 'Post Detail';
+$this->title = 'Chi tiết bài';
 $this->params['breadcrumbs'][] = $this->title;
 $listCmt = \common\models\Comment::find()->where(['post_id' => $model['id']])->asArray()->all();
 $likeCount = \common\models\Like::find()->where(['post_id' => $model['id']])->count();

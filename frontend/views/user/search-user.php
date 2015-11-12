@@ -5,7 +5,7 @@
  * Date: 10/13/2015
  * Time: 10:03 PM
  */
-$this->title = 'Search User';
+$this->title = 'Tìm kiếm người dùng';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

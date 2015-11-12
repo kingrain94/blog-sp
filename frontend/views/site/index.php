@@ -5,7 +5,7 @@
  * Date: 10/10/2015
  * Time: 6:57 PM
  */
-$this->title = "Timeline";
+$this->title = "Dòng thời gian";
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

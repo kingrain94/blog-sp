@@ -8,7 +8,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'New Post';
+$this->title = 'Viết bài';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

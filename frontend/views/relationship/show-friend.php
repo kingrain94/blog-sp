@@ -5,7 +5,7 @@
  * Date: 10/13/2015
  * Time: 10:03 PM
  */
-$this->title = 'Friends';
+$this->title = 'Mối quan hệ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

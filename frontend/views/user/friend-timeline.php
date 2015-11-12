@@ -5,7 +5,7 @@
  * Date: 11/4/2015
  * Time: 7:53 PM
  */
-$this->title = 'Friend Timeline';
+$this->title = 'Tham quan';
 $this->params['breadcrumbs'][] = $this->title;
 
 $listPost = \common\models\Post::find()->where(['user_id' => $model['id']])->asArray()->all();

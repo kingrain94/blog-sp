@@ -16,6 +16,7 @@ use common\models\User;
 use frontend\models\PostCreateForm;
 use frontend\models\PostEditForm;
 use Yii;
+use yii\data\Pagination;
 use yii\helpers\Url;
 use yii\web\Controller;
 
@@ -87,13 +88,23 @@ class PostController extends Controller
             $this->redirect(Url::to(['/site/login']));
         }
 
-        $list_post = Post::find()
-            ->where(['user_id' => Yii::$app->user->getId()])
+        $query = Post::find()->where(['user_id' => Yii::$app->user->getId()]);
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 4,
+            'totalCount' => $query->count(),
+        ]);
+
+        $list_post = $query->orderBy('id')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
             ->asArray()
-            ->orderBy('id')
             ->all();
 
-        return $this->render('show', ['model' => $list_post]);
+        return $this->render('show', [
+            'model' => $list_post,
+            'pagination' => $pagination,
+        ]);
     }
 
     public function actionDetail($id)

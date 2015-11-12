@@ -53,6 +53,7 @@ $model = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
                         ],
                     ],
                     ['label' => 'Lịch làm việc', 'icon' => 'fa fa-calendar', 'url' => ['/schedule/show']],
+                    ['label' => 'Tin nhắn', 'icon' => 'fa fa-envelope', 'url' => ['/message/show-inbox']],
                 ],
             ]
         ) ?>

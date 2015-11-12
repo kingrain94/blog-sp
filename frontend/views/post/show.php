@@ -6,7 +6,9 @@
  * Time: 2:39 PM
  */
 
-$this->title = 'Post';
+use yii\widgets\LinkPager;
+
+$this->title = 'Bài viết';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -52,6 +54,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
         </div>
     </div>
+
+    <?= LinkPager::widget(['pagination' => $pagination]) ?>
 
     <a class="btn btn-app" href="<?= \yii\helpers\Url::to(['/post/create']) ?>" style="position: fixed; bottom: 50px; right: 10px; border-color: #3c8dbc">
         <i class="fa fa-edit"></i> Viết bài
