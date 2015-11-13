@@ -8,8 +8,10 @@ $postCount = \common\models\Post::find()->where(['user_id' => $model['id']])->co
 $friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model['id'], 'status' => 1])->count()
     + \common\models\Relationship::find()->where(['user_id_2' => $model['id'], 'status' => 1])->count();
 
-$listNewRelNotify = \common\models\RelationshipNotification::find()->where(['receive_id' => Yii::$app->user->getId(), 'status' => 0])->asArray()->all();
-$listOldRelNotify = \common\models\RelationshipNotification::find()->where(['receive_id' => Yii::$app->user->getId(), 'status' => 1])->asArray()->all();
+$listNewRelNotify = \common\models\RelationshipNotification::find()->where(['receive_id' => Yii::$app->user->getId()])->orderBy('status')->limit(20)->asArray()->all();
+$newRelNotifyCount = \common\models\RelationshipNotification::find()->where(['receive_id' => Yii::$app->user->getId(), 'status' => 0])->count();
+$listNewMsgNotify = \common\models\Message::find()->where(['receiver_id' => Yii::$app->user->getId()])->orderBy('is_notified')->limit(20)->asArray()->all();
+$newMsgNotifyCount = \common\models\Message::find()->where(['receiver_id' => Yii::$app->user->getId(), 'is_notified' => 0])->count();
 ?>
 
 <header class="main-header">
@@ -27,85 +29,58 @@ $listOldRelNotify = \common\models\RelationshipNotification::find()->where(['rec
             <ul class="nav navbar-nav">
 
                 <!-- Messages: style can be found in dropdown.less-->
-                <li class="dropdown messages-menu">
+                <li class="notify_msg dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="label label-success">4</span>
+                        <span class="notify_msg_count label label-success"><?php if ($newMsgNotifyCount > 0) {echo $newMsgNotifyCount;} ?></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
+                        <li class="header">Bạn có <?= $newMsgNotifyCount ?> tin nhắn mới</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
-                                <li><!-- start message -->
-                                    <a href="#">
+                                <?php
+                                foreach ($listNewMsgNotify as $msgNotify) {
+                                    $sender = \common\models\User::findOne(['id' => $msgNotify['sender_id']]);
+                                    if ($sender['image'] != "") {
+                                        $imageSource = Yii::$app->request->baseUrl ."/images/" .$sender['image'];
+                                    } else {
+                                        $imageSource = Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
+                                    }
+                                    if ($msgNotify['is_notified'] == 0) {
+                                        echo '<li>
+                                    <a href="?r=message/read&id='.$msgNotify['id'].'">
                                         <div class="pull-left">
-                                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
+                                            <img src="'.$imageSource.'" class="img-circle"
+                                                 alt="User Image"/>
+                                        </div>
+                                        <h4><b>
+                                            '.$sender['username'].'</b>
+                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                        </h4>
+                                        <b><p> đã gửi cho bạn một tin nhắn</p></b>
+                                    </a>
+                                </li>';
+                                    } else {
+                                        echo '<li>
+                                    <a href="?r=message/read&id='.$msgNotify['id'].'">
+                                        <div class="pull-left">
+                                            <img src="'.$imageSource.'" class="img-circle"
                                                  alt="User Image"/>
                                         </div>
                                         <h4>
-                                            Support Team
+                                            '.$sender['username'].'
                                             <small><i class="fa fa-clock-o"></i> 5 mins</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p> đã gửi cho bạn một tin nhắn</p>
                                     </a>
-                                </li>
-                                <!-- end message -->
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="<?= $directoryAsset ?>/img/user3-128x128.jpg" class="img-circle"
-                                                 alt="user image"/>
-                                        </div>
-                                        <h4>
-                                            AdminLTE Design Team
-                                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="<?= $directoryAsset ?>/img/user4-128x128.jpg" class="img-circle"
-                                                 alt="user image"/>
-                                        </div>
-                                        <h4>
-                                            Developers
-                                            <small><i class="fa fa-clock-o"></i> Today</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="<?= $directoryAsset ?>/img/user3-128x128.jpg" class="img-circle"
-                                                 alt="user image"/>
-                                        </div>
-                                        <h4>
-                                            Sales Department
-                                            <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="<?= $directoryAsset ?>/img/user4-128x128.jpg" class="img-circle"
-                                                 alt="user image"/>
-                                        </div>
-                                        <h4>
-                                            Reviewers
-                                            <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
+                                </li>';
+                                    }
+                                }
+                                ?>
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
+                        <li class="footer"><a href="#">Xem tất cả</a></li>
                     </ul>
                 </li>
                 <li class="dropdown notifications-menu">
@@ -154,28 +129,45 @@ $listOldRelNotify = \common\models\RelationshipNotification::find()->where(['rec
                 <li class="notify_rel dropdown tasks-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-users"></i>
-                        <span class="rel_notify_count label label-danger"><?php if (sizeof($listNewRelNotify) > 0) echo sizeof($listNewRelNotify) ?></span>
+                        <span class="rel_notify_count label label-danger"><?php if ($newRelNotifyCount > 0) echo $newRelNotifyCount ?></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">Bạn có <?= sizeof($listNewRelNotify) ?> thông báo về mối quan hệ </li>
+                        <li class="header">Bạn có <?= $newRelNotifyCount ?> thông báo về mối quan hệ </li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <?php
                                 foreach ($listNewRelNotify as $newRelNotify) {
                                     $userAction = \common\models\User::findOne(['id' => $newRelNotify['action_id']]);
-                                    if ($newRelNotify['type'] == 1) {
-                                        echo '<li>
-                                                <a href="?r=user/show-friend-timeline&id='.$userAction['id'].'" style="color: red">
+
+                                    if ($newRelNotify['status'] == 0) {
+                                        if ($newRelNotify['type'] == 1) {
+                                            echo '<li>
+                                                <a href="?r=user/show-friend-timeline&id='.$userAction['id'].'" style="color:red">
                                                     <i class="fa fa-user-plus text-aqua"></i>&nbsp;&nbsp; '.$userAction['username'].' đã yêu cầu tạo mối quan hệ
                                                 </a>
                                             </li>';
-                                    } elseif ($newRelNotify['type'] == 2) {
-                                        echo '<li>
+                                        } elseif ($newRelNotify['type'] == 2) {
+                                            echo '<li>
+                                                <a href="?r=user/show-friend-timeline&id='.$userAction['id'].'" style="color:red">
+                                                    <i class="fa fa-user text-aqua"></i>&nbsp;&nbsp; '.$userAction['username'].' đã chấp nhận yêu cầu của bạn
+                                                </a>
+                                            </li>';
+                                        }
+                                    } else {
+                                        if ($newRelNotify['type'] == 1) {
+                                            echo '<li>
+                                                <a href="?r=user/show-friend-timeline&id='.$userAction['id'].'">
+                                                    <i class="fa fa-user-plus text-aqua"></i>&nbsp;&nbsp; '.$userAction['username'].' đã yêu cầu tạo mối quan hệ
+                                                </a>
+                                            </li>';
+                                        } elseif ($newRelNotify['type'] == 2) {
+                                            echo '<li>
                                                 <a href="?r=user/show-friend-timeline&id='.$userAction['id'].'">
                                                     <i class="fa fa-user text-aqua"></i>&nbsp;&nbsp; '.$userAction['username'].' đã chấp nhận yêu cầu của bạn
                                                 </a>
                                             </li>';
+                                        }
                                     }
                                 }
                                 ?>

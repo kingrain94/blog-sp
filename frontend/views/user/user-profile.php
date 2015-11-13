@@ -16,7 +16,7 @@ $user = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
         <!-- Profile Image -->
         <div class="box box-primary">
             <div class="box-body box-profile">
-                <a href="www.google.com"><img class="profile-user-img img-responsive img-circle" src="<?php
+                <a href=""><img class="profile-user-img img-responsive img-circle" src="<?php
                     if ($user['image'] != "") {
                         echo Yii::$app->request->baseUrl ."/images/" .$user['image'];
                     } else {
@@ -149,8 +149,8 @@ $user = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
 
                     <a class="edit_profile_success" style="display: none">
                         <div class="callout callout-info">
-                            <h4>Success!</h4>
-                            <p>You have updated your information success!</p>
+                            <h4>Thành công!</h4>
+                            <p>Bạn đã cập nhật thành công thông tin cá nhân!</p>
                         </div>
                     </a>
 

@@ -46,6 +46,7 @@ foreach ($arrRelationship as $rel) {
         </div><!-- /. box -->
     </div><!-- /.col -->
     <div class="col-md-9">
+
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Soạn tin nhắn mới</h3>
@@ -54,8 +55,8 @@ foreach ($arrRelationship as $rel) {
             <?php $form = ActiveForm::begin()?>
             <div class="box-body">
                 <?=
-                $form->field($model, 'receiver')->widget(Select2::classname(), [
-                    'data' => array(1 => 'messi', 2=> 'ronaldo', 3 => 'neymar'),
+                $form->field($model, 'receiver[]')->widget(Select2::classname(), [
+                    'data' => $arrUserName,
                     'language' => 'en',
                     'options' => ['multiple' => true, 'placeholder' => 'To ...'],
                     'pluginOptions' => [

@@ -16,10 +16,10 @@ use yii\web\Controller;
 
 class MessageController extends Controller
 {
-    public $enableCsrfValidation = false;
-
     public function actionShowInbox()
     {
+        Message::updateAll(['is_notified' => 1], 'is_notified=0 AND receiver_id=' .\Yii::$app->user->getId());
+
         $query = Message::find()->where(['receiver_id' => \Yii::$app->user->getId()])->orderBy('status');
 
         $pagination = new Pagination([

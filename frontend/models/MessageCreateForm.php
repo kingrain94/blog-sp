@@ -10,7 +10,6 @@ namespace frontend\models;
 
 
 use common\models\Message;
-use common\models\User;
 use yii\base\Model;
 
 class MessageCreateForm extends Model
@@ -25,7 +24,7 @@ class MessageCreateForm extends Model
     public function rules()
     {
         return [
-            ['subject', 'required'],
+            [['subject', 'receiver'], 'required'],
             ['subject', 'string', 'max' => 100],
             ['content', 'string', 'max' => 1000],
             ['status', 'integer'],
@@ -34,14 +33,14 @@ class MessageCreateForm extends Model
 
     public function addMessage()
     {
-        foreach ($this->receiver as $username) {
+        foreach ($this->receiver as $receiverId) {
             $message = new Message();
             $message['subject'] = $this->subject;
             $message['content'] = $this->content;
             $message['create_at'] = $this->create_at;
             $message['status'] = $this->status;
             $message['sender_id'] = $this->sender_id;
-            $message['receiver_id'] = User::findOne(['username' => $username])->id;
+            $message['receiver_id'] = $receiverId;
             $message->save();
         }
     }

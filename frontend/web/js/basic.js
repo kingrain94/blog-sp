@@ -162,6 +162,14 @@ $(document).ready(function(){
         });
     });
 
+    $('.notify_msg').click(function() {
+        $('.notify_msg_count').hide();
+        $.ajax({
+            type:"POST",
+            url:"?r=notification/make-old-message-notification",
+        });
+    });
+
     $('.text-aqua').click(function() {
         $('#add-new-event').css({"background-color":"#00C0EF", "border-color":"#00C0EF"});
         $('#event_color').val("#00C0EF");
