@@ -38,9 +38,9 @@ foreach ($arrRelationship as $rel) {
             </div>
             <div class="box-body no-padding">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-inbox"></i> Tin đã nhận <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Tin đã gửi</a></li>
-                    <li><a href="#"><i class="fa fa-file-text-o"></i> Tin nháp</a></li>
+                    <li><a href="?r=message/show-inbox"><i class="fa fa-inbox"></i> Tin đã nhận <span class="label label-primary pull-right">12</span></a></li>
+                    <li><a href="?r=message/show-outbox"><i class="fa fa-envelope-o"></i> Tin đã gửi</a></li>
+                    <li><a href="?r=message/show-drafts"><i class="fa fa-file-text-o"></i> Tin nháp</a></li>
                 </ul>
             </div><!-- /.box-body -->
         </div><!-- /. box -->
@@ -75,10 +75,10 @@ foreach ($arrRelationship as $rel) {
 
             <div class="box-footer">
                 <div class="pull-right">
-                    <button class="btn btn-default"><i class="fa fa-pencil"></i> Lưu</button>
+                    <button class="save_message btn btn-default"><i class="fa fa-pencil"></i> Lưu</button>
                     <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Gửi</button>
                 </div>
-                <button class="btn btn-default"><i class="fa fa-times"></i> Xóa</button>
+                <button class="discard_message btn btn-default"><i class="fa fa-times"></i> Xóa</button>
             </div>
             <?php ActiveForm::end() ?>
         </div><!-- /. box -->

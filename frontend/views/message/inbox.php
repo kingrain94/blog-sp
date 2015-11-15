@@ -25,8 +25,8 @@ $newCount = \common\models\Message::find()->where(['receiver_id' => Yii::$app->u
             <div class="box-body no-padding">
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="#"><i class="fa fa-inbox"></i> Tin đã nhận <span class="label label-primary pull-right"><?= $newCount ?></span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Tin đã gửi</a></li>
-                    <li><a href="#"><i class="fa fa-file-text-o"></i> Tin nháp</a></li>
+                    <li><a href="?r=message/show-outbox"><i class="fa fa-envelope-o"></i> Tin đã gửi</a></li>
+                    <li><a href="?r=message/show-drafts"><i class="fa fa-file-text-o"></i> Tin nháp</a></li>
                 </ul>
             </div><!-- /.box-body -->
         </div><!-- /. box -->
@@ -34,7 +34,7 @@ $newCount = \common\models\Message::find()->where(['receiver_id' => Yii::$app->u
     <div class="col-md-9">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Inbox</h3>
+                <h3 class="box-title">Hộp tin</h3>
                 <div class="box-tools pull-right">
                     <div class="has-feedback">
                         <input class="form-control input-sm" placeholder="Search Mail" type="text">

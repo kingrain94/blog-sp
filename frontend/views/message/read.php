@@ -23,8 +23,8 @@ $newCount = \common\models\Message::find()->where(['receiver_id' => Yii::$app->u
             <div class="box-body no-padding">
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="?r=message/show-inbox"><i class="fa fa-inbox"></i> Tin đã nhận <span class="label label-primary pull-right"><?= $newCount ?></span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Tin đã gửi</a></li>
-                    <li><a href="#"><i class="fa fa-file-text-o"></i> Tin nháp</a></li>
+                    <li><a href="?r=message/show-outbox"><i class="fa fa-envelope-o"></i> Tin đã gửi</a></li>
+                    <li><a href="?r=message/show-drafts"><i class="fa fa-file-text-o"></i> Tin nháp</a></li>
                 </ul>
             </div><!-- /.box-body -->
         </div><!-- /. box -->
@@ -49,6 +49,14 @@ $newCount = \common\models\Message::find()->where(['receiver_id' => Yii::$app->u
                             echo $user['username'];
                         }
                         ?> <span class="mailbox-read-time pull-right"><?= $model['create_at'] ?></span></h5>
+                    <h5>To: <?php
+                        $user = \common\models\User::findOne(['id' => $model['receiver_id']]);
+                        if ($user['fullname'] != "") {
+                            echo $user['username'].' ('.$user['fullname'].')';
+                        } else {
+                            echo $user['username'];
+                        }
+                        ?></h5>
                 </div><!-- /.mailbox-read-info -->
                 <div class="mailbox-controls with-border text-center">
                     <div class="btn-group">

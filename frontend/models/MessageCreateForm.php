@@ -44,4 +44,12 @@ class MessageCreateForm extends Model
             $message->save();
         }
     }
+
+    public function cacheDraftsMessage($message)
+    {
+        $this->subject = $message['subject'];
+        $this->content = $message['content'];
+        $this->receiver[0] = $message['receiver_id'];
+        $this->sender_id = $message['sender_id'];
+    }
 }
