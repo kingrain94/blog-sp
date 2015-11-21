@@ -10,6 +10,7 @@ namespace frontend\models;
 
 
 use common\models\Post;
+use common\models\PostProtected;
 use yii\base\Model;
 use yii\web\UploadedFile;
 
@@ -21,6 +22,7 @@ class PostCreateForm extends Model
     public $permit;
     public $date;
     public $user_id;
+    public $reader;
     /**
      * @var UploadedFile
      */
@@ -35,6 +37,7 @@ class PostCreateForm extends Model
             ['permit', 'integer', 'min' => 1, 'max' => 4],
             ['date', 'string'],
             ['thumbnail', 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg', 'checkExtensionByMimeType' => false],
+            ['reader', 'each', 'rule' => ['integer']],
         ];
     }
 
@@ -54,6 +57,16 @@ class PostCreateForm extends Model
         }
         $newPost['user_id'] = $this->user_id;
         $newPost->save();
+
+        if ($newPost['permit'] == 2) {
+            foreach ($this->reader as $userId) {
+                $newPostProtected = new PostProtected();
+                $newPostProtected['create_at'] = $newPost['create_at'];
+                $newPostProtected['post_id'] = $newPost['id'];
+                $newPostProtected['user_id'] = $userId;
+                $newPostProtected->save();
+            }
+        }
     }
 
 

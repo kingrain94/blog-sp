@@ -77,4 +77,11 @@ class Relationship extends ActiveRecord
         $relationship['status'] = 3;
         $relationship['user_id_action'] = $user_id_action;
     }
+
+    public static function isInRelationship($user_id_1, $user_id_2)
+    {
+        $sql = 'SELECT * FROM relationship WHERE ((user_id_1=:user_id_1 AND user_id_2=:user_id_2)
+                  OR (user_id_1=:user_id_2 AND user_id_2=:user_id_1)) AND status=1';
+        return Relationship::findBySql($sql, [':user_id_1' => $user_id_1, ':user_id_2' => $user_id_2])->count() > 0;
+    }
 }

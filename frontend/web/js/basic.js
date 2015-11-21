@@ -222,4 +222,13 @@ $(document).ready(function(){
         $('#add-new-event').css({"background-color":"#001F3F", "border-color":"#001F3F"});
         $('#event_color').val("#001F3F");
     });
+
+    $('#inputPermit').change(function() {
+        var val = $('#inputPermit option:selected').text();
+        if (val != 'protected 1') {
+            $('.postReader').hide();
+        } else {
+            $('.postReader').show();
+        }
+    });
 });

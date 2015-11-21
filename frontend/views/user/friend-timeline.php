@@ -9,6 +9,24 @@ $this->title = 'Tham quan';
 $this->params['breadcrumbs'][] = $this->title;
 
 $listPost = \common\models\Post::find()->where(['user_id' => $model['id']])->asArray()->all();
+$listTemp = $listPost;
+foreach ($listTemp as $post) {
+    $isCanRead = true;
+    if ($post['permit'] == 1) {
+        $isCanRead = false;
+    } elseif ($post['permit'] == 2) {
+        $isCanRead = \common\models\PostProtected::find()->where(['post_id' => $post['id'], 'user_id' =>
+            Yii::$app->user->getId()])->count() > 0;
+    } elseif ($post['permit'] == 3) {
+        $isCanRead = \common\models\Relationship::isInRelationship($model['id'], Yii::$app->user->getId());
+    }
+
+    if (!$isCanRead) {
+        if(($key = array_search($post, $listPost)) !== false) {
+            unset($listPost[$key]);
+        }
+    }
+}
 $friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model['id'], 'status' => 1])->count()
     + \common\models\Relationship::find()->where(['user_id_2' => $model['id'], 'status' => 1])->count();
 ?>

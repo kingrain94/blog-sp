@@ -5,11 +5,25 @@
  * Date: 10/10/2015
  * Time: 3:03 PM
  */
+use common\models\Relationship;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $this->title = 'Sửa bài';
 $this->params['breadcrumbs'][] = $this->title;
+
+$sql = 'SELECT * FROM relationship WHERE ((user_id_1=:user_id)
+                  OR (user_id_2=:user_id)) AND status=1';
+$arrRelationship = Relationship::findBySql($sql, [':user_id' => Yii::$app->user->getId()])->asArray()->all();
+$arrUserName = array();
+foreach ($arrRelationship as $rel) {
+    if ($rel['user_id_1'] == Yii::$app->user->getId()) {
+        $arrUserName[$rel['user_id_2']] = \common\models\User::findOne(['id' => $rel['user_id_2']])->username;
+    } else {
+        $arrUserName[$rel['user_id_1']] = \common\models\User::findOne(['id' => $rel['user_id_1']])->username;
+    }
+}
 ?>
 
 <div class="post-edit-form">
@@ -50,6 +64,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="postReader" style="display: none">
+                        <?=
+                        $form->field($model, 'reader[]')->widget(Select2::classname(), [
+                            'data' => $arrUserName,
+                            'language' => 'en',
+                            'options' => ['multiple' => true, 'placeholder' => 'Who read?'],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ]);
+                        ?>
                     </div>
 
                     <div class="form-group" style="margin-top:30px">

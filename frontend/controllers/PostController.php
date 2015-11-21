@@ -11,6 +11,7 @@ use common\models\Comment;
 use common\models\Like;
 use common\models\Post;
 use common\models\PostNotification;
+use common\models\PostProtected;
 use common\models\PostTag;
 use common\models\User;
 use frontend\models\PostCreateForm;
@@ -79,6 +80,7 @@ class PostController extends Controller
             Comment::deleteAll(['post_id' => $id]);
             PostTag::deleteAll(['post_id' => $id]);
             PostNotification::deleteAll(['post_id' => $id]);
+            PostProtected::deleteAll(['post_id' => $id]);
         }
     }
 
