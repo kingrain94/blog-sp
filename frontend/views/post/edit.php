@@ -6,6 +6,7 @@
  * Time: 3:03 PM
  */
 use common\models\Relationship;
+use dosamigos\ckeditor\CKEditor;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -50,7 +51,10 @@ foreach ($arrRelationship as $rel) {
                         </div><!-- /.input group -->
                     </div>
 
-                    <?= $form->field($model,'content')->textarea(['length' => 1000, 'rows' => 8])?>
+                    <?= $form->field($model, 'content')->widget(CKEditor::className(), [
+                        'options' => ['rows' => 10],
+                        'preset' => 'basic'
+                    ]) ?>
 
                     <div class="form-group">
                         <label for="inputPermit">Permission</label>
