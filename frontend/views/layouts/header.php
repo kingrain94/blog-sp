@@ -83,46 +83,57 @@ $newMsgNotifyCount = \common\models\Message::find()->where(['receiver_id' => Yii
                         <li class="footer"><a href="#">Xem tất cả</a></li>
                     </ul>
                 </li>
-                <li class="dropdown notifications-menu">
+                <?php
+                $listPostNotify = \common\models\PostNotification::find()->where(['receiver_id' => Yii::$app->user->getId()])->limit(20)->orderBy('status')->asArray()->all();
+                $newPostNotifyCount = \common\models\PostNotification::find()->where(['receiver_id' => Yii::$app->user->getId(), 'status' => 0])->count();
+
+                ?>
+                <li class="notify_post dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">10</span>
+                        <span class="notify_post_count label label-warning"><?php if ($newPostNotifyCount > 0) {echo $newPostNotifyCount;} ?></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 10 notifications</li>
+                        <li class="header">Bạn có <?= $newPostNotifyCount ?> thông báo bài viết</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-warning text-yellow"></i> Very long description here that may
-                                        not fit into the page and may cause design problems
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-users text-red"></i> 5 new members joined
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-user text-red"></i> You changed your username
-                                    </a>
-                                </li>
+                            <ul >
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today-->
+<!--                                    </a>-->
+<!--                                </li>-->
+                                <?php
+                                foreach ($listPostNotify as $notify) {
+                                    $user = \common\models\User::findOne(['id' => $notify['action_id']]);
+                                    if ($user['fullname'] == '') {$name = $user['username'];} else {$name = $user['fullname'];}
+                                    $isOwnPost = \common\models\Post::find()->where(['id' => $notify['post_id'], 'user_id' => Yii::$app->user->getId()])->count() > 0;
+                                    if ($notify['type'] == 1) {
+                                        if ($isOwnPost) {
+                                            echo '<li>
+                                                <a href="?r=post/detail&id='.$notify['post_id'].'">
+                                                <p><i class="fa fa-comment"></i> <b>'.$name.'</b> đã bình luận bài viết của bạn</p>
+                                                </a>
+                                              </li>';
+                                        } else {
+                                            echo '<li>
+                                                <a href="?r=post/detail&id='.$notify['post_id'].'">
+                                                <i class="fa fa-comment"></i> <b>'.$name.'</b> đã bình luận 1 bài viết mà bạn theo dõi
+                                                </a>
+                                              </li>';
+                                        }
+                                    } else {
+                                        echo '<li>
+                                                <a href="?r=post/detail&id='.$notify['post_id'].'">
+                                                <i class="fa fa-thumbs-up"></i> <b>'.$name.'</b> đã thích bài viết của bạn
+                                                </a>
+                                              </li>';
+                                    }
+                                }
+                                ?>
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">View all</a></li>
+                        <li class="footer"><a href="#">Xem tất cả</a></li>
                     </ul>
                 </li>
                 <!-- Tasks: style can be found in dropdown.less -->

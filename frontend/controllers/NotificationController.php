@@ -10,6 +10,7 @@ namespace frontend\controllers;
 
 
 use common\models\Message;
+use common\models\PostNotification;
 use common\models\RelationshipNotification;
 use yii\web\Controller;
 
@@ -23,5 +24,10 @@ class NotificationController extends Controller
     public function actionMakeOldMessageNotification()
     {
         Message::updateAll(['is_notified' => 1], 'is_notified=0 AND receiver_id=' .\Yii::$app->user->getId());
+    }
+
+    public function actionMakeOldPostNotification()
+    {
+        PostNotification::updateAll(['status' => 1], 'status=0 AND receiver_id=' .\Yii::$app->user->getId());
     }
 }

@@ -124,6 +124,19 @@ class PostController extends Controller
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
             Like::addLike($id, Yii::$app->user->getId());
+
+            $receiver = Post::findOne(['id' => $id])['user_id'];
+
+            if ($receiver != Yii::$app->user->getId()) {
+                $newNotify = new PostNotification();
+                $newNotify['post_id'] = $id;
+                $newNotify['type'] = 0;
+                $newNotify['status'] = 0;
+                $newNotify['action_id'] = Yii::$app->user->getId();
+                $newNotify['receiver_id'] = $receiver;
+                $newNotify['create_at'] = date("Y/m/d H:i");
+                $newNotify->save();
+            }
         }
     }
 
@@ -135,6 +148,8 @@ class PostController extends Controller
 
         if (isset($_POST['id'])) {
             Like::deleteAll(['user_id' => Yii::$app->user->getId(), 'post_id' => $_POST['id']]);
+
+            PostNotification::deleteAll(['post_id' => $_POST['id'], 'type' => 0, 'action_id' => Yii::$app->user->getId()]);
         }
     }
 
@@ -156,15 +171,49 @@ class PostController extends Controller
                 $image = Yii::$app->request->baseUrl ."/images/avatar-default.jpg";
             }
 
+            $id = $_POST['post_id'];
+            $receiver = Post::findOne(['id' => $id])['user_id'];
+            if ($receiver != Yii::$app->user->getId()) {
+                $newNotify = new PostNotification();
+                $newNotify['post_id'] = $id;
+                $newNotify['type'] = 1;
+                $newNotify['status'] = 0;
+                $newNotify['action_id'] = Yii::$app->user->getId();
+                $newNotify['receiver_id'] = $receiver;
+                $newNotify['create_at'] = date("Y/m/d H:i");
+                $newNotify->save();
+            }
+
+            $listComment = Comment::find()->where(['post_id' => $id])->asArray()->all();
+            foreach ($listComment as $oneComment) {
+                $isAdded[$oneComment['user_id']] = 0;
+            }
+            $isAdded[$receiver] = 1;
+            foreach ($listComment as $oneComment) {
+                $receiver = $oneComment['user_id'];
+
+                if ($receiver != Yii::$app->user->getId() && $isAdded[$receiver] != 1) {
+                    $newNotify = new PostNotification();
+                    $newNotify['post_id'] = $id;
+                    $newNotify['type'] = 1;
+                    $newNotify['status'] = 0;
+                    $newNotify['action_id'] = Yii::$app->user->getId();
+                    $newNotify['receiver_id'] = $receiver;
+                    $newNotify['create_at'] = date("Y/m/d H:i");
+                    $newNotify->save();
+                }
+                $isAdded[$receiver] = 1;
+            }
+
             echo '<div class="box-comment">'.
-                    '<img class="img-circle img-sm" src="'.$image.'" alt="user image">'.
-                    '<div class="comment-text">'.
-                      '<span class="username">'.
-                        $user['username'].
-                        '<span class="text-muted pull-right">'.$comment['create_at'].'</span>'.
-                      '</span>'.
-                        $comment['content'].
-                    '</div>'.
+                '<img class="img-circle img-sm" src="'.$image.'" alt="user image">'.
+                '<div class="comment-text">'.
+                '<span class="username">'.
+                $user['username'].
+                '<span class="text-muted pull-right">'.$comment['create_at'].'</span>'.
+                '</span>'.
+                $comment['content'].
+                '</div>'.
                 '</div>';
         } else {
             echo 'NO';

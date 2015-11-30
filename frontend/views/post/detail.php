@@ -43,9 +43,11 @@ $isLiked = \common\models\Like::findOne(['post_id' => $model['id'], 'user_id' =>
                 <!-- Social sharing buttons -->
                 <?php
                 if ($isLiked) {
-                    echo '<a class="unlike_post" id="' .$model['id'] .'"><button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-down"></i> Unlike</button></a>';
+                    echo '<a class="unlike_post" id="' .$model['id'] .'"><button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-down"></i> Unlike</button></a>
+                            <a class="like_post" id="' .$model['id'] .'" style="display:none;"><button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button></a>';
                 } else {
-                    echo '<a class="like_post" id="' .$model['id'] .'"><button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button></a>';
+                    echo '<a class="unlike_post" id="' .$model['id'] .'" style="display:none;"><button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-down"></i> Unlike</button></a>
+                            <a class="like_post" id="' .$model['id'] .'"><button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button></a>';
                 }
                 ?>
                 <span class="pull-right text-muted"><?= $likeCount ?> likes - <?= sizeof($listCmt) ?> comments</span>

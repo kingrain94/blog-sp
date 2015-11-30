@@ -38,28 +38,24 @@ $(document).ready(function(){
     });
 
     $('.like_post').click(function () {
+        $(this).hide();
+        $('.unlike_post').show();
         var data = "id=" + $(this).attr('id');
         $.ajax({
            type:"POST",
             url:"?r=post/like",
             data:data,
-            success:function() {
-                $(this).replaceWith($('.unlike_post'));
-                //$(".unlike_post").show();
-            }
         });
     });
 
     $('.unlike_post').click(function () {
+        $(this).hide();
+        $('.like_post').show();
         var data = "id=" + $(this).attr('id');
         $.ajax({
             type:"POST",
             url:"?r=post/unlike",
             data:data,
-            success:function() {
-                $(this).hide();
-                //$(".unlike_post").show();
-            }
         });
     });
 
@@ -167,6 +163,14 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             url:"?r=notification/make-old-message-notification",
+        });
+    });
+
+    $('.notify_post').click(function() {
+       $('.notify_post_count').hide();
+        $.ajax({
+            type:"POST",
+            url:"?r=notification/make-old-post-notification",
         });
     });
 

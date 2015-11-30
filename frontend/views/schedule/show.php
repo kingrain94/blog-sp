@@ -47,7 +47,7 @@ foreach ($listE as $item) {
                     <input id="event_color" name="EventCreateForm[color]" style="display: none" value="#00C0EF">
                     <div class="input-group">
                         <div class="input-group-btn">
-                            <label style="background-color: rgb(0, 166, 90); border-color: rgb(0, 166, 90);" id="add-new-event" class="btn btn-primary btn-flat">Tên:</label>
+                            <label style="background-color: #00C0EF; border-color: #00C0EF;" id="add-new-event" class="btn btn-primary btn-flat">Tên:</label>
                         </div><!-- /btn-group -->
                         <input name="EventCreateForm[title]" id="new-event" class="form-control" type="text">
                     </div><!-- /input-group -->
