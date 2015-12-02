@@ -26,6 +26,7 @@
     <file url="file://$PROJECT_DIR$/frontend/views/schedule/show-received.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/frontend/views/schedule/show.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/frontend/views/site/index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/frontend/views/site/login.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/frontend/views/user/friend-timeline.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/frontend/views/user/search-user-item.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/frontend/views/user/search-user.php" charset="UTF-8" />

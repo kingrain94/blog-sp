@@ -37,7 +37,7 @@ $listPost = \common\models\Post::find()->where(['create_at' => date('Y-m-d')])->
                 '.$content.'
             </div>
             <div class="timeline-footer">
-                <a href="?r=post/detail&id='.$post['id'].'" class="btn btn-danger btn-flat btn-xs">Xem bài viết</a>
+                <a href="?r=post/detail&id='.$post['id'].'" class="btn btn-primary btn-flat btn-xs">Xem bài viết</a>
             </div>
         </div>
     </li>';
