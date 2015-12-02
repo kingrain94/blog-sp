@@ -20,6 +20,7 @@ class EventCreateForm extends Model
     public $color;
     public $create_at;
     public $own_id;
+    public $friend;
 
     public function rules()
     {
@@ -29,18 +30,21 @@ class EventCreateForm extends Model
             ['end', 'date'],
             ['color', 'string'],
             ['create_at', 'string'],
+            ['friend', 'each', 'rule' => ['integer']],
         ];
     }
 
-    public function addEvent()
+    public function addEvent($title)
     {
         $event = new Schedule();
-        $event['title'] = $this->title;
+        $event['title'] = $title;
         $event['start'] = $this->start;
         $event['end'] = $this->end;
         $event['create_at'] = $this->create_at;
         $event['own_id'] = $this->own_id;
         $event['color'] = $this->color;
         $event->save();
+
+        return $event['id'];
     }
 }

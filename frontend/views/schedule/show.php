@@ -1,5 +1,7 @@
 <?php
+use common\models\Relationship;
 use kartik\datetime\DateTimePicker;
+use kartik\select2\Select2;
 
 $this->title = 'Lịch làm việc';
 $this->params['breadcrumbs'][] = $this->title;
@@ -15,6 +17,18 @@ foreach ($listE as $item) {
     $event->end = date($item['end']);
     $event->color = $item['color'];
     $events[] = $event;
+}
+
+$sql = 'SELECT * FROM relationship WHERE ((user_id_1=:user_id)
+                  OR (user_id_2=:user_id)) AND status=1';
+$arrRelationship = Relationship::findBySql($sql, [':user_id' => Yii::$app->user->getId()])->asArray()->all();
+$arrUserName = array();
+foreach ($arrRelationship as $rel) {
+    if ($rel['user_id_1'] == Yii::$app->user->getId()) {
+        $arrUserName[$rel['user_id_2']] = \common\models\User::findOne(['id' => $rel['user_id_2']])->username;
+    } else {
+        $arrUserName[$rel['user_id_1']] = \common\models\User::findOne(['id' => $rel['user_id_1']])->username;
+    }
 }
 ?>
 
@@ -72,6 +86,18 @@ foreach ($listE as $item) {
                                 'autoclose'=>true,
                                 'format' => 'yyyy-mm-dd hh:ii'
                             ]
+                        ]);
+                        ?>
+                    </div>
+                    <div class="input-group" style="margin-top: 10px;">
+                        <?=
+                        Select2::widget([
+                            'name' => 'EventCreateForm[friend][]',
+                            'data' => $arrUserName,
+                            'options' => ['multiple' => true, 'placeholder' => 'With?'],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
                         ]);
                         ?>
                     </div>

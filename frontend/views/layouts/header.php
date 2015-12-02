@@ -190,6 +190,59 @@ $newMsgNotifyCount = \common\models\Message::find()->where(['receiver_id' => Yii
                     </ul>
                 </li>
                 <!-- User Account: style can be found in dropdown.less -->
+                <li class="notify_rel dropdown tasks-menu">
+                    <?php
+                    $listScheduleNotify = \common\models\ScheduleNotification::find()->where(['receiver_id' => Yii::$app->user->getId()])->asArray()->all();
+                    ?>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-flag-o"></i>
+                        <span class="rel_notify_count label label-danger"><?php if (sizeof($listScheduleNotify) > 0) echo sizeof($listScheduleNotify);  ?></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Bạn có <?= sizeof($listScheduleNotify) ?> thông báo công việc </li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+<!--                                <li>-->
+<!--                                    <a href="?r=schedule/show-received-schedule">-->
+<!--                                        <h3>-->
+<!--                                            Design some buttons-->
+<!--                                        </h3>-->
+<!--                                        <div class="progress xs">-->
+<!--                                            <div class="progress-bar progress-bar-aqua" style="width: 100%" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+
+                                <?php
+                                foreach ($listScheduleNotify as $scheduleNotify) {
+                                    $userActionSchedule = \common\models\User::findOne(['id' => $scheduleNotify['action_id']]);
+                                    if ($userActionSchedule['fullname'] != '') {
+                                        $nameActionSchedule = $userActionSchedule['fullname'];
+                                    } else {
+                                        $nameActionSchedule = $userActionSchedule['username'];
+                                    }
+                                    echo '<li>
+                                    <a href="?r=schedule/show-received-schedule&id='.$scheduleNotify['id'].'">
+                                        <h3>
+                                            '.$nameActionSchedule.'đã thêm bạn vào một công việc
+                                        </h3>
+                                        <div class="progress xs">
+                                            <div class="progress-bar progress-bar-aqua" style="width: 100%" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>';
+                                }
+                                ?>
+                            </ul>
+                        </li>
+                        <li class="footer">
+                            <a href="#">Xem tất cả</a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
