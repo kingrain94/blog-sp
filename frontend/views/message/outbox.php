@@ -35,24 +35,10 @@ $newCount = \common\models\Message::find()->where(['receiver_id' => Yii::$app->u
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Hộp tin</h3>
-                <div class="box-tools pull-right">
-                    <div class="has-feedback">
-                        <input class="form-control input-sm" placeholder="Search Mail" type="text">
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
-                </div><!-- /.box-tools -->
+
             </div><!-- /.box-header -->
             <div class="box-body no-padding">
-                <div class="mailbox-controls">
-                    <!-- Check all button -->
-                    <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
-                    <div class="btn-group">
-                        <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                        <button class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                        <button class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-                    </div><!-- /.btn-group -->
-                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                </div>
+
                 <div class="table-responsive mailbox-messages">
                     <table class="table table-hover table-striped">
                         <tbody>
@@ -64,7 +50,7 @@ $newCount = \common\models\Message::find()->where(['receiver_id' => Yii::$app->u
                             <td class="mailbox-star"><a href=""><i class="fa fa-star-o text-yellow"></i></a></td>
                             <td class="mailbox-name"><a href="?r=message/read&id='.$item['id'].'">'.$user['username'].'</a></td>
                             <td class="mailbox-subject"><b> '.$item['subject'].'</b> '.$item['content'].'</td>
-                            <td class="mailbox-date">5 mins ago</td>
+                            <td class="mailbox-date">'.$item['create_at'].'</td>
                             </tr>';
                         }
                         ?>

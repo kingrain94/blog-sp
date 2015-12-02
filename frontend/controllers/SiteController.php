@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\User;
 use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -219,5 +220,12 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionChangeThemeColor($id)
+    {
+        User::updateAll(['themeId' => $id], 'id=' .Yii::$app->user->getId());
+
+        $this->redirect('?r=site/index');
     }
 }

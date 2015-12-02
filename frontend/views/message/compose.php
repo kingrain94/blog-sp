@@ -75,10 +75,8 @@ foreach ($arrRelationship as $rel) {
 
             <div class="box-footer">
                 <div class="pull-right">
-                    <button class="save_message btn btn-default"><i class="fa fa-pencil"></i> Lưu</button>
                     <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Gửi</button>
                 </div>
-                <button class="discard_message btn btn-default"><i class="fa fa-times"></i> Xóa</button>
             </div>
             <?php ActiveForm::end() ?>
         </div><!-- /. box -->

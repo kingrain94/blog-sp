@@ -36,7 +36,21 @@ if (Yii::$app->user->isGuest) {
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body class="skin-blue sidebar-mini">
+
+    <?php
+    $user = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
+    if ($user['themeId'] == 1) {
+        echo '<body class="skin-green sidebar-mini">';
+    } elseif ($user['themeId'] == 2) {
+        echo '<body class="skin-purple sidebar-mini">';
+    } elseif ($user['themeId'] == 3) {
+        echo '<body class="skin-red sidebar-mini">';
+    } elseif ($user['themeId'] == 4) {
+        echo '<body class="skin-yellow sidebar-mini">';
+    } else {
+        echo '<body class="skin-blue sidebar-mini">';
+    }
+    ?>
     <?php $this->beginBody() ?>
     <div class="wrapper">
 
