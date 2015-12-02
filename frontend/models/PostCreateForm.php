@@ -51,7 +51,7 @@ class PostCreateForm extends Model
             $newPost['image'] = $this->thumbnail;
         }
         if ($this->date == "") {
-            $newPost['create_at'] = date("Y/m/d H:i");
+            $newPost['create_at'] = date("Y-m-d");
         } else {
             $newPost['create_at'] = $this->date;
         }

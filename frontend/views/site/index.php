@@ -5,59 +5,44 @@
  * Date: 10/10/2015
  * Time: 6:57 PM
  */
-$this->title = "Dòng thời gian";
+$this->title = "Bài viết trong ngày";
 $this->params['breadcrumbs'][] = $this->title;
+
+$listPost = \common\models\Post::find()->where(['create_at' => date('Y-m-d')])->asArray()->all();
 ?>
 
 <ul class="timeline">
 
-    <li class="time-label"> <!-- The first of one date -->
+    <li class="time-label">
         <span class="bg-red">
             <?= date('Y-m-d') ?>
         </span>
     </li>
 
-    <li>
-        <i class="fa fa-envelope bg-blue"></i>
+    <?php
+    foreach ($listPost as $post) {
+        $user = \common\models\User::findOne(['id' => $post['user_id']]);
+        if (strlen($post['content']) > 200) {
+            $content = substr($post['content'], 0, 200) ." ...";
+        } else {
+            $content = $post['content'];
+        }
+
+        echo '<li>
+        <i class="fa fa-edit bg-red"></i>
         <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-            <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
-
+            <span class="time"><i class="fa fa-clock-o"></i>'.$post['create_at'].'</span>
+            <h3 class="timeline-header"><a href="?r=user/show-friend-timeline&id='.$user['id'].'">'.$user['fullname'].'</a> đã đăng một bài viết</h3>
             <div class="timeline-body">
-                ...
-                Content goes here
-            </div>
-
-            <div class="timeline-footer">
-                <a class="btn btn-primary btn-xs">...</a>
-            </div>
-        </div>
-    </li>
-
-    <li>
-        <i class="fa fa-user bg-aqua"></i>
-        <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-            <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
-        </div>
-    </li>
-
-    <li>
-        <i class="fa fa-comments bg-yellow"></i>
-        <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-            <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-            <div class="timeline-body">
-                Take me to your leader!
-                Switzerland is small and neutral!
-                We are more like Germany, ambitious and misunderstood!
+                '.$content.'
             </div>
             <div class="timeline-footer">
-                <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                <a href="?r=post/detail&id='.$post['id'].'" class="btn btn-danger btn-flat btn-xs">Xem bài viết</a>
             </div>
         </div>
-    </li>
+    </li>';
+    }
+    ?>
 
     <li>
         <i class="fa fa-clock-o bg-gray"></i>

@@ -33,7 +33,7 @@ $newCount = \common\models\Message::find()->where(['receiver_id' => Yii::$app->u
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Read Mail</h3>
-                
+
             </div><!-- /.box-header -->
             <div class="box-body no-padding">
                 <div class="mailbox-read-info">

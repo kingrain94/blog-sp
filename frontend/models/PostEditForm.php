@@ -63,7 +63,7 @@ class PostEditForm extends Model
             $editPost['image'] = $this->thumbnail;
         }
         if ($this->date == "") {
-            $editPost['create_at'] = date("Y/m/d H:i");
+            $editPost['create_at'] = date("Y-m-d");
         } else {
             $editPost['create_at'] = $this->date;
         }

@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9a8cf2b-a5d9-425e-890a-33527008a6c3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/controllers/SiteController.php" afterPath="$PROJECT_DIR$/frontend/controllers/SiteController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/message/compose.php" afterPath="$PROJECT_DIR$/frontend/views/message/compose.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/layouts/content.php" afterPath="$PROJECT_DIR$/frontend/views/layouts/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/user/friend-timeline.php" afterPath="$PROJECT_DIR$/frontend/views/user/friend-timeline.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/message/inbox.php" afterPath="$PROJECT_DIR$/frontend/views/message/inbox.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/config/main.php" afterPath="$PROJECT_DIR$/common/config/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/layouts/main.php" afterPath="$PROJECT_DIR$/frontend/views/layouts/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/message/outbox.php" afterPath="$PROJECT_DIR$/frontend/views/message/outbox.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/models/PostCreateForm.php" afterPath="$PROJECT_DIR$/frontend/models/PostCreateForm.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/models/PostEditForm.php" afterPath="$PROJECT_DIR$/frontend/models/PostEditForm.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/site/index.php" afterPath="$PROJECT_DIR$/frontend/views/site/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/message/read.php" afterPath="$PROJECT_DIR$/frontend/views/message/read.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/user/user-profile.php" afterPath="$PROJECT_DIR$/frontend/views/user/user-profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="yii2adv-blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,72 +27,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="inbox.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/views/message/inbox.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/views/site/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.153847">
-              <caret line="61" column="75" selection-start-line="61" selection-start-column="75" selection-end-line="61" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.16256158">
+              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
               <folding>
-                <marker date="1449076709662" expanded="true" signature="2084:2938" placeholder="..." />
-                <marker date="1449076709662" expanded="true" signature="2084:2939" placeholder="..." />
-                <marker date="1449076709662" expanded="true" signature="2084:2999" placeholder="..." />
-                <marker date="1449076709662" expanded="true" signature="2173:2192" placeholder="..." />
-                <marker date="1449076709662" expanded="true" signature="2236:2267" placeholder="..." />
-                <marker date="1449076709662" expanded="true" signature="2297:2492" placeholder="..." />
-                <marker date="1449076709662" expanded="true" signature="3081:3998" placeholder="..." />
-                <marker date="1449076709662" expanded="false" signature="3170:3189" placeholder="..." />
-                <marker date="1449076709662" expanded="false" signature="3233:3264" placeholder="..." />
-                <marker date="1449076709662" expanded="false" signature="3294:3489" placeholder="..." />
-                <marker date="1449076709662" expanded="true" signature="4298:4438" placeholder="..." />
-                <marker date="1449076709662" expanded="true" signature="4345:4438" placeholder="..." />
-                <marker date="1449076709662" expanded="true" signature="4390:4438" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="736:1344" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="814:875" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="814:876" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="814:986" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="814:987" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="814:1003" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="814:1004" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="814:1006" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="814:1334" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="1094:1111" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="1094:1112" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="1094:1142" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="1184:1228" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="1184:1229" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="1184:1251" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="1184:1319" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="1369:1387" placeholder="..." />
+                <marker date="1449079185321" expanded="true" signature="1369:1425" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="outbox.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/views/message/outbox.php">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.307693">
-              <caret line="52" column="75" selection-start-line="52" selection-start-column="75" selection-end-line="52" selection-end-column="75" />
-              <folding>
-                <marker date="1449076780951" expanded="true" signature="2025:2942" placeholder="..." />
-                <marker date="1449076780951" expanded="false" signature="2114:2133" placeholder="..." />
-                <marker date="1449076780951" expanded="false" signature="2177:2208" placeholder="..." />
-                <marker date="1449076780951" expanded="false" signature="2238:2433" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="compose.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/views/message/compose.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.23077">
-              <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
-              <folding>
-                <marker date="1449076866520" expanded="true" signature="301:411" placeholder="SELECT * FRO..relationship..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user-profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/views/user/user-profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.8076923">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state vertical-scroll-proportion="-17.0">
+              <caret line="51" column="49" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="read.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/frontend/views/message/read.php">
+      <file leaf-file-name="item.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/views/post/item.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52545154">
-              <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+            <state vertical-scroll-proportion="-9.807693">
+              <caret line="35" column="63" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostCreateForm.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/models/PostCreateForm.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.807693">
+              <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostEditForm.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/models/PostEditForm.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.730769">
+              <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/controllers/PostController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="111" column="36" selection-start-line="111" selection-start-column="36" selection-end-line="111" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -137,7 +137,6 @@
         <option value="$PROJECT_DIR$/frontend/views/layouts/left.php" />
         <option value="$PROJECT_DIR$/frontend/views/user/search-user.php" />
         <option value="$PROJECT_DIR$/frontend/views/relationship/show-friend.php" />
-        <option value="$PROJECT_DIR$/frontend/views/site/index.php" />
         <option value="$PROJECT_DIR$/frontend/views/post/item.php" />
         <option value="$PROJECT_DIR$/frontend/views/post/show.php" />
         <option value="$PROJECT_DIR$/frontend/views/relationship/show-friend-item.php" />
@@ -147,8 +146,6 @@
         <option value="$PROJECT_DIR$/frontend/controllers/MessageController.php" />
         <option value="$PROJECT_DIR$/common/models/PostProtected.php" />
         <option value="$PROJECT_DIR$/common/models/Relationship.php" />
-        <option value="$PROJECT_DIR$/frontend/models/PostCreateForm.php" />
-        <option value="$PROJECT_DIR$/frontend/models/PostEditForm.php" />
         <option value="$PROJECT_DIR$/frontend/views/post/create.php" />
         <option value="$PROJECT_DIR$/frontend/views/post/edit.php" />
         <option value="$PROJECT_DIR$/frontend/controllers/NotificationController.php" />
@@ -172,6 +169,9 @@
         <option value="$PROJECT_DIR$/frontend/views/message/compose.php" />
         <option value="$PROJECT_DIR$/frontend/views/user/user-profile.php" />
         <option value="$PROJECT_DIR$/frontend/views/message/read.php" />
+        <option value="$PROJECT_DIR$/frontend/models/PostCreateForm.php" />
+        <option value="$PROJECT_DIR$/frontend/models/PostEditForm.php" />
+        <option value="$PROJECT_DIR$/frontend/views/site/index.php" />
       </list>
     </option>
   </component>
@@ -613,7 +613,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21806167" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -653,13 +653,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frontend/views/message/drafts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="55" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/models/PostProtected.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.8461537">
@@ -685,13 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="84" column="115" selection-start-line="84" selection-start-column="115" selection-end-line="84" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/models/PostEditForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -796,20 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/site/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/models/PostCreateForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.22824302">
-          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/models/Schedule.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -834,16 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/post/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding>
-            <element signature="e#91#122#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/controllers/RelationshipController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.448276">
@@ -856,33 +818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/post/item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/schedule/show.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="88" selection-start-line="27" selection-start-column="88" selection-end-line="27" selection-end-column="88" />
-          <folding>
-            <element signature="e#6#37#0#PHP" expanded="false" />
-            <marker date="1448979503909" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..relationship..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/controllers/PostController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.730769">
-          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -1049,64 +984,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/message/inbox.php">
+    <entry file="file://$PROJECT_DIR$/frontend/views/schedule/show.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.153847">
-          <caret line="61" column="75" selection-start-line="61" selection-start-column="75" selection-end-line="61" selection-end-column="75" />
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
           <folding>
-            <marker date="1449076709662" expanded="true" signature="2084:2938" placeholder="..." />
-            <marker date="1449076709662" expanded="true" signature="2084:2939" placeholder="..." />
-            <marker date="1449076709662" expanded="true" signature="2084:2999" placeholder="..." />
-            <marker date="1449076709662" expanded="true" signature="2173:2192" placeholder="..." />
-            <marker date="1449076709662" expanded="true" signature="2236:2267" placeholder="..." />
-            <marker date="1449076709662" expanded="true" signature="2297:2492" placeholder="..." />
-            <marker date="1449076709662" expanded="true" signature="3081:3998" placeholder="..." />
-            <marker date="1449076709662" expanded="false" signature="3170:3189" placeholder="..." />
-            <marker date="1449076709662" expanded="false" signature="3233:3264" placeholder="..." />
-            <marker date="1449076709662" expanded="false" signature="3294:3489" placeholder="..." />
-            <marker date="1449076709662" expanded="true" signature="4298:4438" placeholder="..." />
-            <marker date="1449076709662" expanded="true" signature="4345:4438" placeholder="..." />
-            <marker date="1449076709662" expanded="true" signature="4390:4438" placeholder="..." />
+            <marker date="1448979503909" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..relationship..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/message/read.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33004925">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/user/user-profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0771757">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/message/compose.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6929392">
+          <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
+          <folding>
+            <marker date="1449076866520" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..relationship..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/views/message/outbox.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.307693">
+        <state vertical-scroll-proportion="0.52545154">
           <caret line="52" column="75" selection-start-line="52" selection-start-column="75" selection-end-line="52" selection-end-column="75" />
           <folding>
-            <marker date="1449076780951" expanded="true" signature="2025:2942" placeholder="..." />
-            <marker date="1449076780951" expanded="false" signature="2114:2133" placeholder="..." />
-            <marker date="1449076780951" expanded="false" signature="2177:2208" placeholder="..." />
-            <marker date="1449076780951" expanded="false" signature="2238:2433" placeholder="..." />
+            <marker date="1449076780951" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076780951" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1449076780951" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1449076780951" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/message/compose.php">
+    <entry file="file://$PROJECT_DIR$/frontend/views/message/inbox.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.23077">
-          <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.90311986">
+          <caret line="61" column="75" selection-start-line="61" selection-start-column="75" selection-end-line="61" selection-end-column="75" />
           <folding>
-            <marker date="1449076866520" expanded="true" signature="301:411" placeholder="SELECT * FRO..relationship..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1449076709662" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/user/user-profile.php">
+    <entry file="file://$PROJECT_DIR$/frontend/views/post/create.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8076923">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.027914613">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding>
+            <marker date="1448119065550" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..relationship..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/post/item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693">
+          <caret line="35" column="63" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/message/read.php">
+    <entry file="file://$PROJECT_DIR$/frontend/models/PostCreateForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52545154">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+        <state vertical-scroll-proportion="-9.807693">
+          <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/models/PostEditForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769">
+          <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/controllers/PostController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="111" column="36" selection-start-line="111" selection-start-column="36" selection-end-line="111" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0">
+          <caret line="51" column="49" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/site/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16256158">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding>
+            <marker date="1449079185321" expanded="true" signature="736:1344" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="814:875" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="814:876" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="814:986" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="814:987" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="814:1003" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="814:1004" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="814:1006" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="814:1334" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="1094:1111" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="1094:1112" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="1094:1142" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="1184:1228" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="1184:1229" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="1184:1251" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="1184:1319" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="1369:1387" placeholder="..." />
+            <marker date="1449079185321" expanded="true" signature="1369:1425" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
