@@ -7,6 +7,7 @@
  */
 use common\models\Relationship;
 use dosamigos\ckeditor\CKEditor;
+use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -42,13 +43,17 @@ foreach ($arrRelationship as $rel) {
                     <?= $form->field($model, 'thumbnail')->fileInput(['accept' => 'image/*', 'maxSize' => 10097152]) ?>
 
                     <div class="form-group">
-                        <label for="inputDate">Date</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input value="<?= $model['date'] ?>" id="inputDate" name="PostEditForm[date]" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text">
-                        </div><!-- /.input group -->
+                        <?php
+                        echo '<label>Date</label>';
+                        echo DatePicker::widget([
+                            'name' => 'PostEditForm[date]',
+                            'type' => DatePicker::TYPE_COMPONENT_PREPEND,
+                            'pluginOptions' => [
+                                'autoclose'=>true,
+                                'format' => 'yyyy-mm-dd'
+                            ]
+                        ]);
+                        ?>
                     </div>
 
                     <?= $form->field($model, 'content')->widget(CKEditor::className(), [
