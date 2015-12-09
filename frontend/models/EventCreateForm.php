@@ -26,12 +26,17 @@ class EventCreateForm extends Model
     {
         return [
             ['title', 'string'],
-            ['start', 'date'],
-            ['end', 'date'],
+            ['start', 'string'],
+            ['end', 'string'],
             ['color', 'string'],
             ['create_at', 'string'],
             ['friend', 'each', 'rule' => ['integer']],
         ];
+    }
+
+    public function validate()
+    {
+        return ($this->title != "") && ($this->start != "") && ($this->start <= $this->end);
     }
 
     public function addEvent($title)

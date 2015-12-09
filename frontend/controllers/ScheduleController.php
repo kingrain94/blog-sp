@@ -30,7 +30,7 @@ class ScheduleController extends Controller
         $model->own_id = \Yii::$app->user->getId();
         $model->create_at = date('Y-m-d h:i');
 
-        if ($model->load(\Yii::$app->request->post())) {
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             if (sizeof($model->friend) > 0) {
                 $title = $model->title .' (Member: ' .User::findOne(['id' => \Yii::$app->user->getId()])->username;
                 foreach ($model->friend as $userId) {

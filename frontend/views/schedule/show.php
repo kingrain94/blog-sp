@@ -102,10 +102,20 @@ foreach ($arrRelationship as $rel) {
                         ?>
                     </div>
                     <div class="input-group">
-                        <button class="btn bg-purple margin" type="submit">Thêm sự kiện</button>
+                        <button class="schedule_btn btn bg-purple margin" type="submit">Thêm sự kiện</button>
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="schedule_success alert alert-danger alert-dismissable" style="display: none">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-ban"></i> Thất bại</h4>
+            Bạn hãy điền đúng và đầy đủ thông tin!
+        </div>
+        <div class="schedule_fail alert alert-info alert-dismissable" style="display: none">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-info"></i> Thành công</h4>
+            Bạn đã thêm lịch thành công!
         </div>
     </div>
     <div class="col-md-9">
