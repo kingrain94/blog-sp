@@ -107,11 +107,6 @@ foreach ($arrRelationship as $rel) {
                 </form>
             </div>
         </div>
-        <div class="schedule_success alert alert-danger alert-dismissable" style="display: none">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i class="icon fa fa-ban"></i> Thất bại</h4>
-            Bạn hãy điền đúng và đầy đủ thông tin!
-        </div>
         <div class="schedule_fail alert alert-info alert-dismissable" style="display: none">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h4><i class="icon fa fa-info"></i> Thành công</h4>

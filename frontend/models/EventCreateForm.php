@@ -36,7 +36,7 @@ class EventCreateForm extends Model
 
     public function validate()
     {
-        return ($this->title != "") && ($this->start != "") && ($this->start <= $this->end);
+        return ($this->title != "") && ($this->start != "") && (($this->start <= $this->end)|| ($this->end==""));
     }
 
     public function addEvent($title)
