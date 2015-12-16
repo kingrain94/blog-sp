@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Url;
 $model = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
+
+$isAdmin = $model['is_admin'] == 1;
 ?>
 
 <aside class="main-sidebar">
@@ -54,6 +56,16 @@ $model = \common\models\User::findOne(['id' => Yii::$app->user->getId()]);
                     ],
                     ['label' => 'Lịch làm việc', 'icon' => 'fa fa-calendar', 'url' => ['/schedule/show']],
                     ['label' => 'Tin nhắn', 'icon' => 'fa fa-envelope', 'url' => ['/message/show-inbox']],
+                    [
+                        'label' => 'Quản trị viên',
+                        'icon' => 'fa fa-cogs',
+                        'url' => '#',
+                        'visible' => $isAdmin,
+                        'items' => [
+                            ['label' => 'Quản lý User', 'icon' => 'fa fa-user', 'url' => ['admin/user-manage']],
+                            ['label' => 'Quản lý Post', 'icon' => 'fa fa-edit', 'url' => ['admin/post-manage']],
+                        ],
+                    ],
                 ],
             ]
         ) ?>
