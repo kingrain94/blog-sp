@@ -54,15 +54,17 @@ foreach ($arrRelationship as $rel) {
 
             <?php $form = ActiveForm::begin()?>
             <div class="box-body">
-                <?=
-                $form->field($model, 'receiver[]')->widget(Select2::classname(), [
-                    'data' => $arrUserName,
-                    'language' => 'en',
-                    'options' => ['multiple' => true, 'placeholder' => 'To ...'],
-                    'pluginOptions' => [
-                        'allowClear' => true
-                    ],
-                ]);
+                <?php
+                if (sizeof($model['receiver']) == 0) {
+                    echo $form->field($model, 'receiver[]')->widget(Select2::classname(), [
+                        'data' => $arrUserName,
+                        'language' => 'en',
+                        'options' => ['multiple' => true, 'placeholder' => 'To ...'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]);
+                }
                 ?>
 
                 <?= $form->field($model,'subject')?>

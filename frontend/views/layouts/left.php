@@ -62,8 +62,8 @@ $isAdmin = $model['is_admin'] == 1;
                         'url' => '#',
                         'visible' => $isAdmin,
                         'items' => [
-                            ['label' => 'Quản lý User', 'icon' => 'fa fa-user', 'url' => ['admin/user-manage']],
-                            ['label' => 'Quản lý Post', 'icon' => 'fa fa-edit', 'url' => ['admin/post-manage']],
+                            ['label' => 'Quản lý người dùng', 'icon' => 'fa fa-user', 'url' => ['admin/user-manage']],
+                            ['label' => 'Quản lý bài viết', 'icon' => 'fa fa-edit', 'url' => ['admin/post-manage']],
                         ],
                     ],
                 ],

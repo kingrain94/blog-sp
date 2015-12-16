@@ -91,6 +91,22 @@ class MessageController extends Controller
         return $this->render('compose', ['model' => $model]);
     }
 
+    public function actionComposeWithAUser($user_id)
+    {
+        $model = new MessageCreateForm();
+        $model->create_at = date('Y-m-d h:i');
+        $model->sender_id = \Yii::$app->user->getId();
+        $model->status = 0;
+        $model->receiver[0] = $user_id;
+
+        if ($model->load(\Yii::$app->request->post())) {
+            $model->addMessage();
+            $this->redirect(Url::to(['/message/show-outbox']));
+        }
+
+        return $this->render('compose', ['model' => $model]);
+    }
+
     public function actionRecompose($id)
     {
         $message = Message::findOne(['id' => $id]);

@@ -55,7 +55,7 @@ $friendCount = \common\models\Relationship::find()->where(['user_id_1' => $model
                         <b>Mối quan hệ</b> <a class="pull-right"><?= $friendCount ?></a>
                     </li>
                 </ul>
-
+                <a href="?r=message/compose-with-a-user&user_id=<?= $model['id'] ?>" class="btn btn-block btn-warning btn-sm"><b>Gửi tin nhắn</b></a>
                 <?php
                 $user_id_1 = Yii::$app->user->getId();
                 $user_id_2 = $model['id'];

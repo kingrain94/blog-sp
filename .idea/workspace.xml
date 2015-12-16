@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9a8cf2b-a5d9-425e-890a-33527008a6c3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/controllers/MessageController.php" afterPath="$PROJECT_DIR$/frontend/controllers/MessageController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/message/compose.php" afterPath="$PROJECT_DIR$/frontend/views/message/compose.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/user/friend-timeline.php" afterPath="$PROJECT_DIR$/frontend/views/user/friend-timeline.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/layouts/left.php" afterPath="$PROJECT_DIR$/frontend/views/layouts/left.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/config/params.php" afterPath="$PROJECT_DIR$/common/config/params.php" />
     </list>
     <ignored path="yii2adv-blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,95 +27,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="left.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/frontend/views/layouts/left.php">
+      <file leaf-file-name="friend-timeline.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/views/user/friend-timeline.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63711">
-              <caret line="59" column="49" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
+            <state vertical-scroll-proportion="-4.576923">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/views/post/create.php">
+      <file leaf-file-name="MessageController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/controllers/MessageController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-43.807693">
+              <caret line="99" column="39" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageCreateForm.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/models/MessageCreateForm.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-3.2692308">
-              <caret line="75" column="34" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
-              <folding>
-                <marker date="1449681158064" expanded="true" signature="346:456" placeholder="SELECT * FRO..relationship..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/controllers/PostController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
-              <caret line="75" column="34" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
+              <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/controllers/AdminController.php">
+      <file leaf-file-name="compose.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/views/message/compose.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.5">
-              <caret line="74" column="60" selection-start-line="74" selection-start-column="60" selection-end-line="74" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.55829227">
+              <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
               <folding>
-                <element signature="e#126#152#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="params.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/config/params.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user-manage.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/views/admin/user-manage.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.192308">
-              <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-              <folding>
-                <element signature="e#6#90#0#PHP" expanded="true" />
-                <element signature="e#92#115#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/views/post/show.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.653846">
-              <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
-              <folding>
-                <marker date="1447349945347" expanded="true" signature="309:574" placeholder="..." />
-                <marker date="1447349945347" expanded="false" signature="360:387" placeholder="..." />
-                <marker date="1447349945347" expanded="true" signature="388:563" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post-manage.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/views/admin/post-manage.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.5">
-              <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-              <folding>
-                <element signature="e#6#90#0#PHP" expanded="true" />
-                <element signature="e#92#124#0#PHP" expanded="true" />
+                <marker date="1450267192865" expanded="true" signature="301:411" placeholder="SELECT * FRO..relationship..." />
               </folding>
             </state>
           </provider>
@@ -148,7 +98,6 @@
         <option value="$PROJECT_DIR$/common/models/Message.php" />
         <option value="$PROJECT_DIR$/frontend/views/message/drafts.php" />
         <option value="$PROJECT_DIR$/frontend/models/MessageCreateForm.php" />
-        <option value="$PROJECT_DIR$/frontend/controllers/MessageController.php" />
         <option value="$PROJECT_DIR$/common/models/PostProtected.php" />
         <option value="$PROJECT_DIR$/common/models/Relationship.php" />
         <option value="$PROJECT_DIR$/frontend/controllers/NotificationController.php" />
@@ -162,10 +111,8 @@
         <option value="$PROJECT_DIR$/frontend/views/layouts/main.php" />
         <option value="$PROJECT_DIR$/frontend/web/js/basic.js" />
         <option value="$PROJECT_DIR$/frontend/views/layouts/content.php" />
-        <option value="$PROJECT_DIR$/frontend/views/user/friend-timeline.php" />
         <option value="$PROJECT_DIR$/frontend/views/message/inbox.php" />
         <option value="$PROJECT_DIR$/frontend/views/message/outbox.php" />
-        <option value="$PROJECT_DIR$/frontend/views/message/compose.php" />
         <option value="$PROJECT_DIR$/frontend/views/user/user-profile.php" />
         <option value="$PROJECT_DIR$/frontend/views/message/read.php" />
         <option value="$PROJECT_DIR$/frontend/models/PostCreateForm.php" />
@@ -185,6 +132,9 @@
         <option value="$PROJECT_DIR$/frontend/views/admin/user-manage.php" />
         <option value="$PROJECT_DIR$/frontend/controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/frontend/views/layouts/left.php" />
+        <option value="$PROJECT_DIR$/frontend/controllers/MessageController.php" />
+        <option value="$PROJECT_DIR$/frontend/views/user/friend-timeline.php" />
+        <option value="$PROJECT_DIR$/frontend/views/message/compose.php" />
       </list>
     </option>
   </component>
@@ -586,7 +536,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21742313" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -711,13 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/user/friend-timeline.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41379312">
-          <caret line="128" column="17" selection-start-line="128" selection-start-column="17" selection-end-line="128" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/views/message/read.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33004925">
@@ -795,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/message/compose.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/views/message/inbox.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -813,14 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="75" selection-start-line="52" selection-start-column="75" selection-end-line="52" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/controllers/MessageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="11" selection-start-line="75" selection-start-column="11" selection-end-line="75" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -857,14 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="18.423077">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/models/MessageCreateForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.076923">
-          <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -984,16 +904,8 @@
         <state vertical-scroll-proportion="-3.2692308">
           <caret line="75" column="34" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
           <folding>
-            <marker date="1449681158064" expanded="true" signature="346:456" placeholder="SELECT * FRO..relationship..." />
+            <marker date="1449681158064" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..relationship..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/config/params.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1002,9 +914,9 @@
         <state vertical-scroll-proportion="-11.653846">
           <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
           <folding>
-            <marker date="1447349945347" expanded="true" signature="309:574" placeholder="..." />
-            <marker date="1447349945347" expanded="false" signature="360:387" placeholder="..." />
-            <marker date="1447349945347" expanded="true" signature="388:563" placeholder="..." />
+            <marker date="1447349945347" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1447349945347" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1447349945347" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1025,8 +937,8 @@
         <state vertical-scroll-proportion="-19.5">
           <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
           <folding>
-            <element signature="e#6#90#0#PHP" expanded="true" />
-            <element signature="e#92#124#0#PHP" expanded="true" />
+            <element signature="e#6#90#0#PHP" expanded="false" />
+            <element signature="e#92#124#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1039,21 +951,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/layouts/left.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.846153">
+          <caret line="65" column="57" selection-start-line="65" selection-start-column="57" selection-end-line="65" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/config/params.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13957307">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.5">
+        <state vertical-scroll-proportion="-29.307692">
           <caret line="74" column="60" selection-start-line="74" selection-start-column="60" selection-end-line="74" selection-end-column="60" />
           <folding>
-            <element signature="e#126#152#0#PHP" expanded="true" />
+            <element signature="e#126#152#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/layouts/left.php">
+    <entry file="file://$PROJECT_DIR$/frontend/models/MessageCreateForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63711">
-          <caret line="59" column="49" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/user/friend-timeline.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/controllers/MessageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-43.807693">
+          <caret line="99" column="39" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/message/compose.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55829227">
+          <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+          <folding>
+            <marker date="1450267192865" expanded="true" signature="301:411" placeholder="SELECT * FRO..relationship..." />
+          </folding>
         </state>
       </provider>
     </entry>
