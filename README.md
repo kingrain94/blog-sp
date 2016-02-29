@@ -1,6 +1,6 @@
 Base on Yii2 PHP framework and AdminLTE bootstrap template
 
-Bblog manager website!
+Blog manager website!
 ===============================
 
 First, you must login or register a new account for blog writing.
