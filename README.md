@@ -1,24 +1,34 @@
-Yii 2 Advanced Project Template
+Base on Yii2 PHP framework and AdminLTE bootstrap template
+
+Bblog manager website!
 ===============================
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+First, you must login or register a new account for blog writing.
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/login.PNG)
+You can change your profile.
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/profile.PNG)
+The timeline page to show newest post.
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/timeline.PNG)
+You can create your new post.
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/vietbai.PNG) 
+and review your old post.
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/baiviet.PNG)
+You can find friend and send a friend request, or send a message to other people
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/friend's%20timeline.PNG)
+and review your friend's list
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/friend.PNG)
+You can add a event to your schedule and view it on time table.
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/lichlamviec.PNG)
+You can review your inbox
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/tinnhan.PNG)
+or compose a new message
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/soantin.PNG)
+to logout click on the right corner above.
+![alt tag](https://github.com/kingrain94/yii2adv-blog/blob/master/intro/image/log%20out.PNG)
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
-
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
-
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
-
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
 
 DIRECTORY STRUCTURE
 -------------------
-
 ```
 common
     config/              contains shared configurations
