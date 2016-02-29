@@ -1,4 +1,4 @@
-Base on Yii2 PHP framework and AdminLTE bootstrap template. Clone source and import file '/intro/db/yii2-blog.sql' with db name same as file name!
+Base on Yii2 PHP framework and AdminLTE bootstrap template. Clone source and import file '/intro/db/yii2-blog.sql' with db name same as file name (yii2-blog)!
 
 Blog manager website!
 ===============================
